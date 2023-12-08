@@ -1,0 +1,46 @@
+/* * aplica para todos */
+*{
+    border:1px solid blue;
+    /* reset css, normalize css */
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+nav{
+    height:150px;
+    width: 100%;
+    background-color:orange;
+}
+
+header{
+    height:400px;
+    width:350px;
+    background-color:orangered;
+    padding: 50px;
+    margin: 60px;
+}
+
+main{
+    height: 700px;
+    width:650px;
+    background-color:aqua;
+}
+
+footer{
+    background-color: blueviolet;
+    width:900px;
+    border:5px solid green;
+    /* 1 valor - aplica para los 4 lados */
+    /* padding:50px; */
+    /* 2 valores - arribayabajo costados */
+    /* padding: 50px 20px; */
+    /* 4 valores - arriba derecha abajo izquierda 🕑 */
+    /* aplica para margen también */
+    padding:50px 40px 30px 20px;
+    /* box-sizing: border-box; ten en cuenta el contenido, el padding y el borde para el ancho/alto */
+    /* display:none; */
+}
+
+/* label, input{
+    display:block;
+} */
