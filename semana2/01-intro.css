@@ -80,3 +80,24 @@ la , es como un Y
     content: "\2022";/*caracter unicode*/
     color: green;
 }
+
+main{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* main > section:nth-child(1){
+    color:peru;
+} */
+
+#elemento1{
+    color:deepskyblue;
+}
+
+/* Elementos */
+section {
+    color: red;
+}
+
+.slogan {
+    color:darkmagenta;
+}
