@@ -1,0 +1,82 @@
+/* hoja de estilos */
+/* etiqueta, van a afectar a todas las etiquetas que encuentre en el documento */
+h1 {
+    background-color: greenyellow;
+}
+
+/* etiquetas de clase */
+/* .nombreclase */
+.parrafo-header {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.boton-header {
+    border: 2px solid black;
+    border-radius: 25px;
+    height: 50px;
+    min-width: 120px;
+}
+
+.boton-importante {
+    background-color: black;
+    color: white;
+    /* border: 2px solid red; */
+}
+
+/* id -> #nombreid */
+#info{
+    color:brown;
+    height:100px;
+    width:100px;
+    border-radius: 50%;
+}
+/* > hace referencia a los primeros elementos hijos */
+/* etiqueta > etiqueta
+clase > etiqueta
+etiqueta > clase
+id > clase
+ */
+ul > li {
+    color:blue;
+    font-weight:bold;
+}
+
+/* me va a afectar a todos los elementos hijos, nietos ....  */
+/* etiqueta etiqueta
+clase etiqueta
+etiqueta clase
+id clase
+ */
+ul li{
+    text-decoration: underline;
+}
+
+/* Pseudoclases */
+/* selector:pseudoclase */
+/* odd - impar */
+tr:nth-of-type(odd) {
+    background-color: aquamarine;
+}
+/* even - parejo, empate */
+tr:nth-of-type(even) {
+    background-color:chocolate;
+}
+
+tr:hover {
+    font-weight:bold;
+    cursor: pointer;
+}
+
+/* pseudoelemento */
+.mini-header{
+    color:red;
+    text-align:center;
+}
+/* selector::pseudoelemento */
+/* selector, selector
+la , es como un Y
+*/
+.mini-header::before, .mini-header::after {
+    content: "\2022";/*caracter unicode*/
+    color: green;
+}

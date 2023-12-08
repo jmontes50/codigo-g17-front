@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tablas</h1>
+    <h2>Mascotas</h2>
+    <table>
+        <thead>
+            <!-- Head Table -  similar al Table Row -->
+            <tr>
+                <th>Animal</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table Row - Fila de una tabla -->
+            <tr>
+                <!-- Table Data - Celda donde vá la data de la tabla -->
+                <td>Gato</td>
+                <td>Michi</td>
+            </tr>
+            <tr>
+                <td>Perro</td>
+                <td>Firulais</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Estudiantes y actividades</h2>
+    <!-- Vamos a organizar un evento deportivo, donde c/estudiante este asociado a una actividad -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre Estudiante</th>
+                <th>Deporte</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Marbella</td>
+                <td rowspan="2">Básquet</td>
+            </tr>
+            <tr>
+                <td>Juan Renato</td>
+                <!-- <td>Básquet</td> -->
+            </tr>
+            <tr>
+                <td>Piero</td>
+                <td rowspan="2">Fútbol</td>    
+            </tr>
+            <tr>
+                <td>Cesar</td>
+                <!-- <td>Fútbol</td>     -->
+            </tr>
+            <tr>
+                <td>Jorge</td>
+                <td rowspan="2">Crossfit</td>
+            </tr>
+            <tr>
+                <td>Carlos</td>
+                <!-- <td>Crossfit</td> -->
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Lista estudiantes</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Formularios</h1>
+    </header>
+    <main>
+      <form>
+        <label for="inputNombres">Nombres:</label>
+        <!-- id es un atributo que sirve como identificador único, como el núm de un DNI -->
+        <input type="text" id="inputNombres" placeholder="Ej.: Jorge Osmar" required minlength="2" maxlength="10"/>
+        <br />
+        <label for="inputApellidos">Apellidos:</label>
+        <input
+          type="text"
+          id="inputApellidos"
+          placeholder="Ej.: Montesinos Aramayo"
+          pattern="[a-z]{1,}"
+        />
+        <br />
+        <label for="correo">email</label>
+        <input type="email" id="correo" placeholder="jorge@codigo.edu" />
+        <br />
+        <label for="edad">Edad</label>
+        <input type="number" id="edad" />
+        <br />
+        <label for="contrasena">Contraseña</label>
+        <input
+          type="password"
+          id="contrasena"
+          placeholder="Mayúsculas y minúsculas"
+          minlength="6"
+        />
+        <br />
+        <h3>Género</h3>
+        <input type="radio" id="radioFemenino" name="genero" />
+        <label for="radioFemenino">Femenino</label>
+
+        <input type="radio" id="radioMasculino" name="genero" />
+        <label for="radioMasculino">Masculino</label>
+
+        <input type="radio" id="radioNoDivulgar" name="genero" />
+        <label for="radioNoDivulgar">NoDivulgar</label>
+        <br />
+
+        <h3>Intereses</h3>
+
+        <label for="tiktok">Ver Tiktok</label>
+        <input type="checkbox" id="tiktok">
+
+        <label for="Musica">Música</label>
+        <input type="checkbox" id="Musica">
+
+        <label for="Futbol">Fútbol</label>
+        <input type="checkbox" id="Futbol">
+
+        <label for="Peliculas">Películas</label>
+        <input type="checkbox" id="Peliculas">
+        <br />
+
+        <h3>Ciudad</h3>
+
+        <select>
+            <!-- son <options -->
+                <option>Arequipa</option>
+                <option>Lima</option>
+                <option>Huánuco</option>
+                <option>Lambayeque</option>
+                <option>Cusco</option>
+        </select>
+
+        <h3>Distritos</h3>
+
+        <input list="distritos">
+        <datalist id="distritos">
+            <option>Lima</option>
+            <option>Pueblo Libre</option>
+            <option>Jesús Maria</option>
+            <option>Lince</option>
+            <option>Miraflores</option>
+        </datalist>
+
+        <hr />
+        <input type="reset" value="Limpiar" />
+        <!-- IMPORTANTE -->
+        <input type="submit" value="Enviar Datos" />
+        <!-- Va ser un evento de la etiqueta form, y es la accion de enviar/entregar la data del formulario -->
+      </form>
+    </main>
+  </body>
+</html>
