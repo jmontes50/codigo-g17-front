@@ -4,18 +4,46 @@ div {
     border:2px solid black;
 }
 
+section {
+    border:2px solid blue;
+    width: 650px;
+    height: 650px;
+    /* margin: 100px; */
+    position: relative; 
+    top: 150px;
+    left: 100px;
+   
+}
+
 div:nth-of-type(1){
     background-color: aquamarine;
+    position:relative;
+    /* mientras mayor sea el valor más por encima estará */
+    z-index:19;
+   
 }
 
 div:nth-of-type(2){
     background-color: orange;
+    position: absolute;
+    /* propiedades adicionales */
+    /* top, left, bottom, right */
+    top:50px;
+    left:50px;
+    /* right:75px; */
+    z-index:9;
 }
 
 div:nth-of-type(3){
     background-color: steelblue;
+    position:relative;
+    z-index:1;
 }
 
 div:nth-of-type(4){
     background-color: orangered;
+    /* siempre va a ser en base al viewport y no se va a mover */
+    position:fixed;
+    top:50px;
+    right:25px;
 }
