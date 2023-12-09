@@ -66,3 +66,34 @@ header > h1 {
     /* box-shadow: hor ver blur spread color*/
     box-shadow: 3px 3px 5px 3px lightgray;
 }
+
+/* Section-Resources */
+.container-center{
+    width:1200px;
+    margin:0 auto;
+}
+
+.resources{
+    text-align: center;
+}
+
+.resources > h2{
+    margin: 96px 0 64px 0;
+}
+
+.resources-cards{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 120px;
+}
+
+.res-card{
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /*flex y grid*/
+}
+
+.res-card > img{
+    height: 225px;
+}
