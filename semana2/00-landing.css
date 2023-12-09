@@ -20,6 +20,8 @@ header{
 header > h1 {
     margin:40px 0;
     font-size: 72px;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
 }
 
 .btn{
