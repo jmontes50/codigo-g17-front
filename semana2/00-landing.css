@@ -1,15 +1,22 @@
+/* poder utilizar una etiqueta descargada */
+@font-face {
+    /* le puedo poner cualquier nombre */
+    font-family: Montserrat;
+    src: url('./assets/Montserrat-VariableFont_wght.ttf');
+}
 /* reset */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
     /* temporal */
     border:1px solid red;
 }
 
 header{
     /* si no encuentra una pasa a la sgte */
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     text-align: center;
     width: 1200px;
     padding:100px;
