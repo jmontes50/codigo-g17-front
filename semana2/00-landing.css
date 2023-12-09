@@ -11,6 +11,10 @@ header{
     /* si no encuentra una pasa a la sgte */
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    width: 1200px;
+    padding:100px;
+    /* auto: automatico, toma los valores como el navegador mejor lo disponga */
+    margin:0 auto;
 }
 
 header > h1 {
