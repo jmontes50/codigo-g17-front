@@ -48,3 +48,20 @@ header > h1 {
     background-color: black;
     color:white;
 }
+
+#btn-wp{
+    background-color: greenyellow;
+    border-radius: 50%;
+    width:75px;
+    height:75px;
+    font-size:64px;
+    position:fixed;
+    bottom:50px;
+    right:50px;
+}
+
+#btn-wp:hover{
+    cursor:pointer;
+    background-color: green;
+    box-shadow: 3px 3px 5px 3px lightgray;
+}
