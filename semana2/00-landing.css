@@ -11,7 +11,20 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     /* temporal */
-    border:1px solid red;
+    /* border:1px solid red; */
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+}
+
+h2{
+    font-size:50px;
+}
+
+h3{
+    font-size: 32px;
 }
 
 header{
@@ -27,8 +40,13 @@ header{
 header > h1 {
     margin:40px 0;
     font-size: 72px;
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
+}
+
+.action{
+    display:flex;
+    gap:10px;
+    margin: 48px auto 64px auto;
+    max-width:300px;    
 }
 
 .btn{
