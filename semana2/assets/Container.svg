@@ -1,0 +1,52 @@
+<svg width="1280" height="304" viewBox="0 0 1280 304" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="488" width="152" height="152" fill="#FED501"/>
+<path d="M488 76H564C564 117.974 529.974 152 488 152V76Z" fill="white"/>
+<path d="M564 0C605.974 0 640 34.0264 640 76H564V0Z" fill="#007CC2"/>
+<rect x="488" y="152" width="152" height="152" fill="#DE5217"/>
+<path d="M564 228H640C640 269.974 605.974 304 564 304V228Z" fill="#A4C14D"/>
+<path d="M564 228C522.026 228 488 262.026 488 304H564V228Z" fill="#007CC2"/>
+<rect x="184" y="152" width="152" height="152" fill="white"/>
+<path d="M336 228H260C260 269.974 294.026 304 336 304V228Z" fill="#A4C14D"/>
+<path d="M260 152C301.974 152 336 186.026 336 228H260V152Z" fill="#007CC2"/>
+<rect x="336" width="152" height="152" fill="white"/>
+<path d="M412 76H488L412 152V76Z" fill="#A4C14D"/>
+<path d="M412 0V76H336L412 0Z" fill="#A4C14D"/>
+<rect x="336" y="152" width="152" height="152" fill="#FED501"/>
+<path d="M412 304C370.026 304 336 269.974 336 228C336 186.026 370.026 152 412 152V304Z" fill="#007CC2"/>
+<circle cx="412" cy="228" r="38" fill="white"/>
+<rect x="32" width="152" height="152" fill="white"/>
+<rect x="108" y="76" width="76" height="76" fill="#A4C14D"/>
+<rect x="32" width="76" height="76" fill="#DE5217"/>
+<rect x="32" y="152" width="152" height="152" fill="#DE5217"/>
+<circle cx="108" cy="228" r="38" fill="white"/>
+<path d="M184 304H32L108 228L184 304Z" fill="#007CC2"/>
+<rect x="184" width="152" height="152" fill="#FED501"/>
+<path d="M336 0V152H184L336 0Z" fill="#007CC2"/>
+<circle cx="260" cy="76" r="38" fill="white"/>
+<rect x="944" width="152" height="152" fill="#DE5217"/>
+<path d="M1020 76L1020 0L1096 76L1020 76Z" fill="white"/>
+<path d="M944 76L1020 76V152L944 76Z" fill="#A4C14D"/>
+<rect x="640" y="152" width="152" height="152" fill="#DE5217"/>
+<path d="M640 228C640 186.026 674.026 152 716 152C757.974 152 792 186.026 792 228L640 228Z" fill="#A4C14D"/>
+<ellipse cx="716" cy="266" rx="38" ry="38" fill="white"/>
+<rect x="792" y="152" width="152" height="152" fill="white"/>
+<path d="M792 228C792 186.026 826.026 152 868 152C909.974 152 944 186.026 944 228L792 228Z" fill="#A4C14D"/>
+<path d="M868 304C826.026 304 792 269.974 792 228C792 186.026 826.026 152 868 152V304Z" fill="#007CC2"/>
+<ellipse cx="906" cy="266" rx="38" ry="38" fill="#FED501"/>
+<rect x="640" width="152" height="152" fill="white"/>
+<path d="M792 152C750.026 152 716 117.974 716 76C716 34.0264 750.026 0 792 0V152Z" fill="#007CC2"/>
+<circle cx="678" cy="76" r="38" fill="#FED501"/>
+<rect x="792" width="152" height="152" fill="#FED501"/>
+<path d="M792 152C833.974 152 868 117.974 868 76C868 34.0264 833.974 0 792 0V152Z" fill="#007CC2"/>
+<path d="M944 -1.85809e-05L944 152L868 76L944 -1.85809e-05Z" fill="white"/>
+<rect x="944" y="152" width="152" height="152" fill="#DE5217"/>
+<rect x="944" y="152" width="76" height="76" fill="#007CC2"/>
+<rect x="1020" y="228" width="76" height="76" fill="white"/>
+<rect x="1096" y="152" width="152" height="152" fill="white"/>
+<circle cx="1172" cy="228" r="38" fill="#211F1F"/>
+<path d="M1248 304H1096L1172 228L1248 304Z" fill="#007CC2"/>
+<path d="M1248 228H1096L1172 152L1248 228Z" fill="#A4C14D"/>
+<rect x="1096" width="152" height="152" fill="white"/>
+<path d="M1096 0L1248 -6.64413e-06L1248 152L1096 0Z" fill="#A4C14D"/>
+<circle cx="1172" cy="76" r="38" fill="#007CC2"/>
+</svg>

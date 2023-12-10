@@ -67,6 +67,10 @@ header > h1 {
     color:white;
 }
 
+.color-shapes {
+    width:100%;
+}
+
 #btn-wp{
     background-color: greenyellow;
     border-radius: 50%;
@@ -83,6 +87,31 @@ header > h1 {
     background-color: green;
     /* box-shadow: hor ver blur spread color*/
     box-shadow: 3px 3px 5px 3px lightgray;
+}
+
+/* Section questions */
+.questions{
+    height:500px;
+    display:flex;
+    gap:40px;
+    padding:96px 0;
+}
+
+.question:nth-of-type(1){
+    border-top:1px solid  orangered;
+}
+
+.question:nth-of-type(1) > i{
+    color:orangered;
+}
+
+.question:nth-of-type(2){
+    border-top: 1px solid steelblue;
+    align-self: flex-end;
+}
+
+.question:nth-of-type(2) > i{
+    color:steelblue;
 }
 
 /* Section-Resources */
