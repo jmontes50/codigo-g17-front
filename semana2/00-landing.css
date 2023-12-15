@@ -55,6 +55,23 @@ nav li {
     display:flex;
     gap: 48px;
     align-items:center;
+    transition-duration: 0.5s;
+}
+
+#checkmenu {
+    /* display:none; */
+    /* visibility hidden si lo coloca en la estructura pero no lo muestra */
+    visibility: hidden;
+}
+
+.show-menu {
+    cursor:pointer;
+    font-size:32px;
+    display: none;
+}
+
+.close-menu {
+    display:none;
 }
 
 
@@ -197,6 +214,41 @@ header > h1 {
 @media screen and (max-width: 768px) {
     .questions {
         flex-direction: column;
+    }
+
+    .show-menu {
+        position:absolute;
+        top:50px;
+        right:50px;
+        display: block;
+        color:gray;
+        font-size:40px;
+        z-index: 99;
+    }
+
+    .close-menu{
+        position:absolute;
+        top:50px;
+        right:50px;
+        display: none;
+        font-size:40px;
+    }
+
+    .items{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:100%;
+        height:100vh;
+        background-color: black;
+        color:white;
+        flex-direction: column;
+        padding:100px 0;
+    }
+    /* ~ hace referencia a los elementos hermanos, en este caso a los elementos hermanos del mismo padre que tengan la clase .items */
+    /* pseudoclase :checked si esta con check ✅ */
+    #checkmenu:checked ~ .items{
+        right: 0;
     }
 }
 
