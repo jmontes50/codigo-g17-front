@@ -1,0 +1,74 @@
+/* reset */
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: orange;
+}
+
+main {
+    background-color: aquamarine;
+}
+
+/* @media medio and (regla/condicional) {
+    vamos a utilizar selectores de CSS como los que ya conocemos pero se aplicarán según la regla
+}*/
+/* una hoja nueva de CSS pero que solo aplica a la condicional que usemos */
+@media screen and (max-width: 768px) {
+    header {
+        background-color: orangered;
+    }
+}
+
+/* print */
+@media screen and (max-width: 420px) {
+    main {
+        background-color: steelblue;
+        font-family: Arial;
+    }
+}
+
+/* Medidas */
+/* Unidades relativas */
+/* %, vh, vw, em y rem */
+/* Unidades estáticas */
+/* px, dot, inches, cm */
+
+header{
+    width:800px;
+}
+
+h1{
+    width:50%; /*padre inmediato*/
+}
+
+h2{
+    width:50vw;
+    border:2px solid black;
+    height: 75vh;
+}
+
+/* html{
+    font-size: 10px;
+} */
+
+/* valor más lejano, es el del elemento HTML y por defecto tiene 16px */
+p{
+    font-size: 2rem;
+    /* font-size:32px; */
+}
+
+main{
+    font-size:40px;
+}
+
+h2{
+    font-size:0.5em;
+    /* font-size:25px; */
+    padding:1em;
+
+}
+
