@@ -31,7 +31,9 @@ header{
     /* si no encuentra una pasa a la sgte */
     /* font-family: Arial, Helvetica, sans-serif; */
     text-align: center;
-    width: 1200px;
+    /* width: 1200px; */
+    max-width: 1200px;
+    /* min-width:480px; */
     padding:100px;
     /* auto: automatico, toma los valores como el navegador mejor lo disponga */
     margin:0 auto;
@@ -87,12 +89,14 @@ header > h1 {
 
 /* Section-Resources */
 .container-center{
-    width:1200px;
+    /* width: 1200px; */
+    max-width:1200px;
     margin:0 auto;
 }
 
 .resources{
     text-align: center;
+    width:100%;
 }
 
 .resources > h2{
@@ -103,6 +107,7 @@ header > h1 {
     display:flex;
     justify-content: space-between;
     margin-bottom: 120px;
+    width:100%;
 }
 
 .res-card{
@@ -114,4 +119,41 @@ header > h1 {
 
 .res-card > img{
     height: 225px;
+}
+
+/* primera es separando el código como si fueran hojas de estilos independientes */
+
+@media screen and (max-width:992px) {
+    .resources-cards {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap:20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    header > h1 {
+       font-size: calc(36px + 2vw); 
+    }
+
+    h2 {
+        /* calc( operación ) */
+        /* calc(tamaño minimo + crecimiento) */
+        font-size: calc(28px + 2vw);
+    }
+
+    .resources-cards{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .res-card {
+        width:100%;
+    }
+
+    .res-card > img {
+        width:60%;
+        margin: 0 auto;
+    }
 }
