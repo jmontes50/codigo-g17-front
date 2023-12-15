@@ -13,7 +13,7 @@
     /* temporal */
     /* border:1px solid red; */
 }
-
+/* estilos generales */
 h1, h2, h3, h4, h5, h6{
     font-family: 'Fraunces', serif;
     font-weight: 300;
@@ -27,6 +27,38 @@ h3{
     font-size: 32px;
 }
 
+nav li {
+    list-style: none;
+}
+
+.container-center{
+    /* width: 1200px; */
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 90px;
+}
+
+/* menu */
+
+.logo {
+    font-family: 'DM Serif Display', sans-serif;
+}
+.menu{
+    display: flex;
+    justify-content: space-between;
+    /* !important me permite indicar que se cumplan los estilos si o si sin tener en cuenta el orden o la especificidad, NO ES BUENA PRÁCTICA */
+    /* padding:42px 0 !important; */
+    padding:42px 0;
+}
+
+.items{
+    display:flex;
+    gap: 48px;
+    align-items:center;
+}
+
+
+/* header */
 header{
     /* si no encuentra una pasa a la sgte */
     /* font-family: Arial, Helvetica, sans-serif; */
@@ -122,11 +154,6 @@ header > h1 {
 }
 
 /* Section-Resources */
-.container-center{
-    /* width: 1200px; */
-    max-width:1200px;
-    margin:0 auto;
-}
 
 .resources{
     text-align: center;
@@ -164,6 +191,12 @@ header > h1 {
         flex-wrap: wrap;
         justify-content: center;
         gap:20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .questions {
+        flex-direction: column;
     }
 }
 
