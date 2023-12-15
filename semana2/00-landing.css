@@ -108,6 +108,8 @@ header > h1 {
     justify-content: space-between;
     margin-bottom: 120px;
     width:100%;
+    /* footer alto 300px */
+    /* min-height: calc(100vh - 300px) */
 }
 
 .res-card{
