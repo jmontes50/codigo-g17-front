@@ -87,6 +87,40 @@ header > h1 {
     box-shadow: 3px 3px 5px 3px lightgray;
 }
 
+/* Questions */
+
+.questions {
+    display:flex;
+    min-height:510px;
+    gap:50px;
+}
+
+.question1, .question2{
+    padding:32px 0 40px 0;
+}
+
+.question1 > i, .question2 > i{
+    margin-bottom: 32px;
+    font-size:40px;
+}
+
+.question1{
+    border-top:3px solid orangered;
+}
+
+.question1 > i{
+    color: orangered;
+}
+
+.question2{
+    border-top:3px solid steelblue;
+    align-self:flex-end;
+}
+
+.question2 > i{
+    color: steelblue;
+}
+
 /* Section-Resources */
 .container-center{
     /* width: 1200px; */
