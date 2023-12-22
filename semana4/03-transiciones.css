@@ -1,0 +1,37 @@
+.caja{
+    width: 300px;
+    height: 300px;
+    border: 2px solid red;
+    background-color: chocolate;
+    /* propiedades de transicion */
+    transition-property: all;
+    /* transition-duracion */
+    /* s - segundos o ms -milisegundos */
+    transition-duration: 1s;
+    /* retraso de la transicion */
+    transition-delay: 2s;
+}
+
+.caja:hover{
+    background-color: aquamarine;
+    border-radius: 50%;
+}
+
+.imagen{
+    width:500px;
+    /* opacity: recibe un calor entre 0 y 1 */
+    opacity: 0.5;
+}
+
+.imagen:hover{
+    opacity: 1;
+    /* scale(escala en un porcentaje) */
+    /* transform: scale(1.02); */
+    /* rotate(valor en grados, ej 10deg) */
+    /* si deseo aplicar varias propiedades de transform tengo que separarlas por espacios */
+    /* translate(ejeX, ejeY */
+    transform: scale(1.05) rotate(3deg) translate(20px, 10px);
+    box-shadow: 0 0 10px gray;
+    transition-property: all;
+    transition-duration: 1s;
+}
