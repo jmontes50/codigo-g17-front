@@ -11,5 +11,17 @@
 
     /* grid-template-columns:300px 300px 300px 300px; */
     /* 1fr - fraction - free space */
-    grid-template-columns: 1fr 1fr 1fr;
+    /* argumento, valor que ingresa a una función */
+    /* repeat(cant, tamañoPX%) */
+    /* grid-template-columns: repeat(4, 200px); */
+    /* minmax(tamMin, tamMax) */
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+
+    /* grid-template-rows: 150px 150px 150px 150px; */
+    grid-template-rows: repeat(3, 1fr);
+
+    /* gap: vertical horizontal */
+    /* gap: 40px 20px; */
+    gap: 20px;
 }
