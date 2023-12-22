@@ -1,4 +1,4 @@
-.caja{
+.caja, .caja2{
     width: 300px;
     height: 300px;
     border: 2px solid red;
@@ -30,7 +30,7 @@
     /* rotate(valor en grados, ej 10deg) */
     /* si deseo aplicar varias propiedades de transform tengo que separarlas por espacios */
     /* translate(ejeX, ejeY */
-    transform: scale(1.05) rotate(3deg) translate(20px, 10px);
+    transform: scale(1.5) rotate(3deg) translate(200px, 100px);
     box-shadow: 0 0 10px gray;
     transition-property: all;
     transition-duration: 1s;
