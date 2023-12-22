@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     /* temporal */
-    border:1px solid red;
+    /* border:1px solid red; */
 }
 
 .container{
@@ -15,16 +15,38 @@
     display:grid;
     grid-template-columns: repeat(4, minmax(150px, 1fr));
     grid-template-rows: repeat(4, minmax(150px, 1fr));
+    gap:20px;
 }
 
 .card{
     width:100%;
     height:100%;
+    position: relative;
+    /* sepia, escala de grises */
+    filter: grayscale(1);
+    transition-duration: 1s;
+    animation-duration: 1s;
+    animation-name: entrada;
+    animation-timing-function: ease-out;
+
+}
+
+.card:hover{
+    filter: grayscale(0);
+    transform: translate(0, 5px) scale(1.02);
+    box-shadow: 0 0 10px black;
 }
 
 .card > img{
-    height:200px;
+    width:100%;
+    height:100%;
     object-fit: cover;
+    position:absolute;
+}
+.card > p{
+    position: relative;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .card:nth-of-type(1){
@@ -51,5 +73,18 @@
 
 .card:nth-of-type(8){
     grid-row: 4 / 5;
-    grid-column: 3 / 4;
+    grid-column: 3 / 5;
+}
+
+@keyframes entrada {
+    0%{
+        /* no se va a ver nada */
+        transform: scale(0);
+    }
+    70%{
+        transform: scale(1.05);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
