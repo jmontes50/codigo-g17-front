@@ -1,0 +1,15 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border:1px solid red;
+}
+
+.contenedor{
+    min-height:100vh;
+    display: grid;
+
+    /* grid-template-columns:300px 300px 300px 300px; */
+    /* 1fr - fraction - free space */
+    grid-template-columns: 1fr 1fr 1fr;
+}
