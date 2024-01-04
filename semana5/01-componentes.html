@@ -115,9 +115,57 @@
                 </div>
             </div>
         </section>
+        <section>
+            <h2>Modal</h2>
+            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ventanaModal">
+                Desea formatear?
+            </button>
+        </section>
     </main>
 
-
+    <div class="modal fade" id="ventanaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title">Desea formatear su PC</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label
+                        for="inputName" class="form-label">
+                            Nombres y Apellidos:
+                        </label>
+                        <input type="text" class="form-control" id="inputName" 
+                        placeholder="Juan Perez">
+                    </div>
+                    <div class="mb-3">
+                        <label
+                        for="inputEmail" class="form-label">
+                            Email
+                        </label>
+                        <input type="email" class="form-control" id="inputEmail" 
+                        placeholder="Juan@gmail.com">
+                    </div>
+                    <div class="mb-3">
+                        <label
+                        for="inputPassword" class="form-label">
+                            Contraseña
+                        </label>
+                        <input type="password" class="form-control" id="inputPassword" 
+                        placeholder="Ingrese su contraseña">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary">
+                        Cancelar
+                    </button>
+                    <button class="btn btn-danger">
+                        Aceptar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
