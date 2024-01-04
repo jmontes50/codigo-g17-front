@@ -1,0 +1,12 @@
+.contenedor{
+    border:1px solid orangered;
+}
+
+.fila{
+    border:2px solid steelblue;
+}
+
+.columna{
+    height:100px;
+    border:2px solid peru;
+}

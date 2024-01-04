@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- CSS de Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./01-bootstrap.css" />
+  </head>
+  <body>
+    <main class="container contenedor">
+        <h1>Bootstrap 5</h1>
+        <!-- grilla -->
+        <!-- row y col, ya son clases que vienen de bootstrap -->
+        <div class="row fila">
+            <p>Si ponemos col dentro de un row estan se van a dividir el espacio de forma equitativa</p>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+            <div class="col columna">
+                Columna
+            </div>
+        </div>
+        <div class="row fila">
+            <p>Bootstrap va a definir 12 columnas para la grilla y con esas 12 columnas va a definir el contenido que se va a mostrar ocupando X columnas</p>
+            <div class="col-8 columna">
+                Columna 8
+            </div>
+            <div class="col-4 columna">
+                Columna 4
+            </div>
+        </div>
+        <div class="row fila">
+            <p>Podemos combinar las clases de col junto con su numero y un breakpoint para indicar como se van a mostrar</p>
+            <div class="col-xl-12 col-lg-6 col-md-4 col-12 columna">
+                Columna 12
+            </div>
+            <div class="col-xl-8 col-lg-3 col-md-4 col-12 columna">
+                Columna 8
+            </div>
+            <div class="col-xl-4 col-lg-3 col-md-4 col-12 columna">
+                Columna 4
+            </div>
+        </div>
+    </main>
+    <!-- JS de Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
