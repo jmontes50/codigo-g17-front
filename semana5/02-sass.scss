@@ -1,0 +1,60 @@
+@import 'variables';
+
+// nesting
+// nav > ul > li > a {
+
+// }
+nav {
+  background-color: aquamarine;
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    li {
+      margin: 0 10px;
+      a {
+        text-decoration: none;
+        color: slateblue;
+      }
+    }
+  }
+}
+
+.btn{
+    padding:20px;
+    background-color:green;
+    color:white;
+    // AMPERSAND &
+    &:hover{
+        font-weight:bold;
+        background-color:greenyellow;
+        color:black;
+    }
+    // .btn--shadow
+    &--shadow{
+        box-shadow:5px 5px 5px 5px black;
+    }
+}
+
+// extends
+//bloques de codigo reutilizables a disposición
+// %nombre extend
+%parrafo {
+    padding:20px;
+    color:crimson;
+    font-family: 10px;
+}
+
+.anuncio{
+    @extend %parrafo;
+}
+
+.articulo{
+    @extend %parrafo;
+    font-weight:bold;
+}
+
+.noticia{
+    @extend %parrafo;
+    background-color:aqua;
+}

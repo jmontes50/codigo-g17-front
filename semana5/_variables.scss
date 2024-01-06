@@ -1,0 +1,13 @@
+// con el _ en el nombre le estamos indicando al preprocesador que en este caso es prepros, que lo ignore y no lo transpile
+
+/*código de css sin problemas*/
+// variable
+$primary-color: peru;
+
+h1 {
+  color: $primary-color;
+}
+
+p {
+  color: $primary-color;
+}
