@@ -1,0 +1,16 @@
+:root{
+    --color-green:#75BF7A;
+}
+/* bootstrap ya trae su reset, no hay que hacerlo */
+*{
+    /* border:1px solid gray; */
+    font-family: 'Poppins', sans-serif;
+}
+
+.color-green-otere{
+    color: var(--color-green);
+}
+
+.bg-green-otere{
+    background-color: var(--color-green);
+}
