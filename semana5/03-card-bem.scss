@@ -1,0 +1,56 @@
+.card{
+    display:flex;
+    flex-direction: column;
+    border:1px solid gray;
+    border-radius: 8px;
+    width:300px;
+    box-shadow: 3px 3px 3px 10px lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+
+    &__image{
+        width:100%;
+        max-height:300px;
+        object-fit: cover;
+    }
+
+    &__content{
+        padding:15px;
+    }
+
+    &__title{
+        font-size:1.4rem;
+        margin-bottom: 8px;
+    }
+
+    &__description{
+        font-size:1rem;
+        margin-bottom:15px;
+    }
+
+    &__button{
+        padding:8px 16px;
+        margin-right: 8px;
+        background-color: steelblue;
+        color:white;
+        border:none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover{
+            font-weight:bold;
+            background-color: darkblue;
+        }
+
+        &--important{
+            background-color: green;
+
+            &:hover{
+                background-color: darkgreen;
+            }
+        }
+    
+    }
+
+    
+}
