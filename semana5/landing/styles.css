@@ -14,3 +14,7 @@
 .bg-green-otere{
     background-color: var(--color-green);
 }
+
+.fs-benefits{
+    font-size: 4rem; /*16 * 4 = 64px*/
+}
