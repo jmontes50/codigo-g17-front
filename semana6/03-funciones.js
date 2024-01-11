@@ -36,3 +36,66 @@ function calcularViaje(pasajes, estadia, comida){
 
 let resultado = calcularViaje(100, 50, 45);
 console.log("resultado: ", resultado);
+
+//ámbito global, lo que declaremos fuera de ningún bloque de código va a existir para todo el código
+let bebida = "Chicha Morada";
+
+function grupoPizza(){
+    //ámbito, lo que declaremos dentro de un bloque de código definido por {} solamente va a existir en ese bloque
+    let aperitivo = "panes al ajo";
+    console.log(`voy a tomar algo de ${bebida}`)
+    console.log(`voy a comer ${aperitivo}`)
+}
+
+grupoPizza();
+
+// console.log(`yo también deseo ${aperitivo}`)
+
+//Funciones en JS son Ciudadanos de primera clase
+//podemos pasar una función como argumento a otra función
+
+//preparamos un arroz chaufa
+function picarVegetales(){
+    console.log("picando vegetales");
+}
+
+function granearArroz(){
+    console.log("graneando arroz");
+}
+
+function freirPolloYHuevo(){
+    console.log("Freir Pollo y Huevo");
+}
+
+function prepararArrozChaufa(paso1, paso2, paso3){
+    paso1();
+    paso2();
+    paso3();
+}
+
+prepararArrozChaufa(picarVegetales, granearArroz, freirPolloYHuevo);
+
+//Hoisting
+//el hoisting es cuando las funciones se mueven al inicio del código
+//1ero estoy llamando a la función
+saludo();
+//luego la estoy declarando
+function saludo() {
+    console.log("Hola");
+}
+
+//conocemos esta sintaxis
+//function nombre(){}
+
+//función flecha
+//let nombreFuncion = (parámetros) => {codigoAEjecutar}
+//Funciones flecha no tienen hoisting
+
+// let despedida = (nombre) => {
+//     console.log(`bye ${nombre}`);
+// }
+let despedida = (nombre) => `bye ${nombre}`;
+
+console.log(despedida("Juan Renato"));
+console.log(despedida("Tebes"));
+console.log(despedida("2023"));
