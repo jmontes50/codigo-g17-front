@@ -46,7 +46,7 @@ let preciosOfertas = [20, 10, 50, 8, 75, 5, 22, 45, 100];
 
 let costoTotal = 0;
 
-// let deseaComprar = false;
+let deseaComprar = false;
 
 for(let i = 0; i < preciosOfertas.length; i++){
     let continuar = confirm(`Desea comprar el producto de valor ${preciosOfertas[i]}`)
@@ -54,6 +54,12 @@ for(let i = 0; i < preciosOfertas.length; i++){
         costoTotal = costoTotal + preciosOfertas[i]
     }else{
         console.log("No compro")
+    }
+    //preguntamos si desea seguir y si no desea corto todo
+    deseaComprar = confirm("Desea seguir comprando???")
+    // if(deseaComprar === false){
+    if(!deseaComprar){
+        break;
     }
 }
 console.log(`El costo total de su compra es: ${costoTotal}`)
