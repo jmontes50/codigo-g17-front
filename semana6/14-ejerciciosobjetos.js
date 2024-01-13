@@ -72,6 +72,10 @@ for(let i = 0; i < notasFinales.length; i++){
     }
 }
 */
+
+//funciones puras, de que no se ven afectadas por algo externo
+//de que si tienen una entrada la salida siempre sera la misma en base a esa entrada
+//Single responsability, Una sola responsabilidad: una función en lo posible debe hacer 01 sola cosa
 function estaAprobado (nombre, promedioFinal){
     if(promedioFinal > 10){
         return `${nombre} esta aprobado con ${promedioFinal}`
