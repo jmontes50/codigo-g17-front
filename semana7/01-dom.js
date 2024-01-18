@@ -98,6 +98,10 @@ miBoton.addEventListener("click", function(){
     }else{
         console.log("No hayyyyyyyyy")
     }
+    //toggle es como un interruptor
+    //si una clase esta dentro de un elemento, la remueve
+    //si la clase no esta dentro del elemento, la agrega
+    miInput.classList.toggle("input-class")
 })
 
 let img = document.querySelector('#imagen');
@@ -108,3 +112,12 @@ img.setAttribute("src", "https://images.unsplash.com/photo-1616011224441-f652db4
 
 img.setAttribute("alt", "Camión San Patricio")
 
+let partners = document.querySelector(".partners");
+
+console.log("Partners", partners)
+
+partners.classList.add("importante");
+
+let noticias = document.getElementById("idNoticias");
+
+noticias.classList.remove("noticias")
