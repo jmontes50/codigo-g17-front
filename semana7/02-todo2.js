@@ -60,6 +60,7 @@ btnAgregar.addEventListener("click", function(){
 //HU2, como usuario deseo que al presionar "Enter" se agregue la tarea a la lista de tareas
 
 //A. cuando se dispara un evento podemos capturar el Objeto del evento, la manera de capturarlo es indicarle un parámetro a la función dentro del addEventListener
+// a comparación de los eventos keyPress y keyDown, keyUp obtiene correctamente la última presionada
 inputTarea.addEventListener("keyup", function(evento){
     // console.log(evento.key)
     //evento.target hace referencia al propio elemento desde donde se esta disparando el evento
