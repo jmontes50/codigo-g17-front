@@ -15,7 +15,7 @@ console.log(window)
  * API DOM - me permite interactuar con el DOM
  * API de Geolocalización, me da la unicacion
  * API de Almacenamiento, LocalStorage
- * API Multimedia, accede a hardware como el microfono o la cámara web
+ * API Multimedia, accede a hardware como el micrófono o la cámara web
  */
 window.navigator.geolocation.getCurrentPosition(function(posicion){
     console.log(posicion)
