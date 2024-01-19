@@ -1,7 +1,17 @@
 //guardar algo
 //localStorage.setItem(nombreDelValorAGuardar, valorEnSiComoString)
-localStorage.setItem("nombres", "Jose Sanchez");
+let btn = document.getElementById("eliminar");
 
-let nombreLS = localStorage.getItem("nombres")
+//la forma de guardar datos en LS siempre será texto
+localStorage.setItem("nombres", [20000, 10000]);
 
-console.log(nombreLS)
+let nombreLS = localStorage.getItem("nombres");
+
+console.log(nombreLS);
+
+btn.addEventListener('click', function(){
+    // console.log("hola")
+    localStorage.removeItem("nombres")
+});
+
+
