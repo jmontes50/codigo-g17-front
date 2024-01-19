@@ -31,10 +31,32 @@ function generarHTMLTareas(tareas){
     return htmlTareas;
 }
 
+function dibujarTareasAlInicio(){
+    console.log("AL INICIO", arrTareas)
+    //obtengo las tareas del LS
+    let tareasObtenidas = localStorage.getItem("tareas")
+    console.log("tareasObtenidas", tareasObtenidas)
+    //Como estan en formato string, las convierto otra vez aun arreglo
+    let arrTareasObtenidas = JSON.parse(tareasObtenidas)
+    console.log("arrTareasObtenidas", arrTareasObtenidas)
+    //Igualando el valor leido del LS en arrTareas
+    //la manera de hacer esto no esta del todo bien
+    arrTareas = arrTareasObtenidas;
+    console.log("IGUALO", arrTareas)
+    //al tenerlas en forma arreglo, las puedo pasar a generarHTMLTareas
+    let htmlTareas = generarHTMLTareas(arrTareasObtenidas)
+    ulTareas.innerHTML = htmlTareas;
+}
+dibujarTareasAlInicio()
+
 //elemento.addEventListener("nombredelevento", funcion)
 btnAgregar.addEventListener("click", function(){
     // console.log(inputTarea.value)
     arrTareas.push(inputTarea.value);
+    let jsonTareas = JSON.stringify(arrTareas);
+    console.log("jsonTareas", jsonTareas)
+    localStorage.setItem("tareas", jsonTareas)
+
     // console.log(arrTareas)
     // console.table(arrTareas)
 
