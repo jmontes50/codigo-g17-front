@@ -143,6 +143,44 @@ let platosPeruanos = [
 
 let platosSection = document.getElementById("platos");
 
+let carritoCompras = [];
+
+function encontrarPlato(id){
+  //1. convertir el id recibido a un numero, porque al obtenerlo viene como un string
+  //lo convierto a un numero
+  let idNumber = parseInt(id);
+  //buscamos un plato lo encontramos
+  let platoEncontrado = platosPeruanos.find(function(plato){
+    return plato.id === idNumber;
+  })
+  //lo retornamos
+  return platoEncontrado;
+}
+
+function agregarProductoACarrito(plato) {
+  //2. preguntar si es que este plato ya existe en carritoCompras
+  //3. En caso no exista lo vamos a agregar a carrito como un producto Nuevo con cantidad 1
+  //4. en caso ya exista solo aumentaremos la cantidad
+
+  //el findIndex retornado en plato existe me da -1 si es que es platoNuevo y numeros mayores a -1 (0, 1,2..) en caso el playo ya exista dentro de carritoCompras
+  let platoExiste = carritoCompras.findIndex(function(item){
+    return item.id === plato.id;
+  })
+  if(platoExiste === -1){
+    //Es nuevo!, como es nuevo lo voy a agregar
+    //Y le vamos añadir una nueva propiedad
+    plato.cantidad = 1;
+    carritoCompras.push(plato)
+  }else{
+    // console.log(platoExiste)
+    //platoExiste me da la posición/índice de donde esta este plato en el carritoCompras
+    //como ya existe ubicamos con la posición dentro de carritoCompras el plato e incrementamos su cantidad en 1
+    carritoCompras[platoExiste].cantidad++;
+  }
+  
+
+}
+
 function crearCartasComida (listaPlatos) {
     // for(let i = 0; i < listaPlatos.length; i++)
     //for of
@@ -153,6 +191,9 @@ function crearCartasComida (listaPlatos) {
         cartaComida.classList.add("col-lg-3");
         cartaComida.classList.add("col-12");
         // console.log(plato)
+        //cuando agregamos el HTML como string con innerHTML a un elemento, 
+        //ya todo lo que hemos agregado lo podemos buscar como un elemento con
+        //querySelector y así acceder a sus propiedades y métodos.
         cartaComida.innerHTML = `
         <div class="card mb-3">
             <img src="https://picsum.photos/300" class="card-img-top" alt="${plato.nombre}">
@@ -160,10 +201,21 @@ function crearCartasComida (listaPlatos) {
                 <h5 class="card-title">${plato.nombre}</h5>
                 <p class="card-text">${plato.descripcion}</p>
                 <p class="fs-6">S/ ${plato.precio}</p>
-                <button class="btn btn-primary">Ordenar</button>
+                <button class="btn btn-primary" data-id="${plato.id}">Ordenar</button>
             </div>
         </div>
         `;
+      //buscaba el botón por su atributo data-id
+        let btnOrdenar = cartaComida.querySelector("[data-id]");
+      //le añadiamos un listener
+        btnOrdenar.addEventListener("click", function(evento){
+          // console.log(evento.target.dataset.id)
+          let platoObtenido = encontrarPlato(evento.target.dataset.id);
+          // console.log(platoObtenido)
+          agregarProductoACarrito(platoObtenido);
+          console.log(carritoCompras);
+        })
+
         arrCartas.push(cartaComida)
         // console.log(cartaComida)
     }

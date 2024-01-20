@@ -1,0 +1,36 @@
+let frutas = ["Kiwi", "Naranja", "Mango"];
+
+let indice = frutas.findIndex(function(item){
+  //y darle una expresión y evaluar
+  return item === "Lulo"
+})
+
+console.log(indice)
+
+//findIndex, me da la posicion e number del elemento encontrado. En caso no encuentre el elemento retornara -1
+
+
+------------------------------------------
+<button id="btn" data-nombre="Jorge">Click</button>
+
+let btn = document.querySelector("[data-nombre]");
+
+----------------------------------------------------------
+
+let frutaEncontrada = frutas.find(function(f){
+  return f === "Mango"
+})
+
+console.log(frutaEncontrada)
+----------------------------------------------------
+
+//Añadir una nueva propiedad
+let gato = {
+  nombre: "Michi",
+  color: "Naranja"
+}
+
+gato.nombre
+gato.edad = 5
+
+console.log(gato)
