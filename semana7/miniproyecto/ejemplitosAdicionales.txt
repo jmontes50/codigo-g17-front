@@ -34,3 +34,12 @@ gato.nombre
 gato.edad = 5
 
 console.log(gato)
+
+--------------------------------------------------
+
+let resumen = carrito.map(function(plato) {
+  return {
+    nombre:plato.nombre,
+    totalUnitario: plato.precio * plato.cantidad
+  }
+});

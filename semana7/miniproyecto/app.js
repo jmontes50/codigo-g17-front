@@ -158,7 +158,7 @@ function encontrarPlato(id){
   return platoEncontrado;
 }
 
-function agregarProductoACarrito(plato) {
+function modificarCarrito(plato, operacion) {
   //2. preguntar si es que este plato ya existe en carritoCompras
   //3. En caso no exista lo vamos a agregar a carrito como un producto Nuevo con cantidad 1
   //4. en caso ya exista solo aumentaremos la cantidad
@@ -174,12 +174,21 @@ function agregarProductoACarrito(plato) {
     carritoCompras.push(plato)
   }else{
     // console.log(platoExiste)
-    //platoExiste me da la posición/índice de donde esta este plato en el carritoCompras
+    //si platoExiste me da la posición/índice de donde esta este plato en el carritoCompras
     //como ya existe ubicamos con la posición dentro de carritoCompras el plato e incrementamos su cantidad en 1
-    carritoCompras[platoExiste].cantidad++;
+    if(operacion === "incrementar"){
+      carritoCompras[platoExiste].cantidad++;
+    }
+    if(operacion === "disminuir"){
+      //el -- equivale a -1
+      if(carritoCompras[platoExiste].cantidad === 0){
+        return; //retorna un valor y me corta la ejecución de la función donde se ejecute.
+      }
+      carritoCompras[platoExiste].cantidad--;
+    }
   }
-  
-
+  //siempre que se modifique el carrito se volverá a dibujar la boleta
+  crearBoleta(carritoCompras);
 }
 
 function crearCartasComida (listaPlatos) {
@@ -213,8 +222,8 @@ function crearCartasComida (listaPlatos) {
           // console.log(evento.target.dataset.id)
           let platoObtenido = encontrarPlato(evento.target.dataset.id);
           // console.log(platoObtenido)
-          agregarProductoACarrito(platoObtenido);
-          crearBoleta(carritoCompras);
+          modificarCarrito(platoObtenido, "incrementar");
+          // crearBoleta(carritoCompras);
           console.table(carritoCompras);
         })
 
@@ -241,14 +250,49 @@ function crearBoleta (carrito) {
         <h5 class="text-primary fw-bold">${plato.nombre}</h5>
         <p>S/ ${plato.precio}</p>
         <div>
-          <button class="btn btn-primary btn-sm"> - </button>
+          <button class="btn btn-primary btn-sm" data-operacion="disminuir"> - </button>
           <span>${plato.cantidad}</span>
-          <button class="btn btn-primary btn-sm"> + </button>
+          <button class="btn btn-primary btn-sm" data-operacion="incrementar"> + </button>
         </div>
       </div>
     `;
+    let btnDisminuir = platoBoleta.querySelector("[data-operacion='disminuir']");
+    btnDisminuir.addEventListener("click", function(){
+      modificarCarrito(plato, "disminuir");
+    })
+    let btnIncrementar = platoBoleta.querySelector("[data-operacion='incrementar']");
+    btnIncrementar.addEventListener("click", function(){
+      modificarCarrito(plato, "incrementar");
+    })
     boletaSection.appendChild(platoBoleta);
+    //---------------------------------parte del precio
   })
+  let resumenBoleta = document.createElement("div");
+    // console.log(JSON.stringify(carritoCompras))
+    //cada item de carrito tendra las propiedades precio y cantidad
+    let total = carrito.reduce(function(acum, item){
+      return acum + (item.precio * item.cantidad)
+    }, 0);
+    /*RETO
+    1. Agregar a la tabla el total Unitario por plato, puedes utilizar el método map
+    2. que si la cantidad llega a 0 dentro del carrito se elimine el producto
+    3. un boton abajo del total que me permita guardar la orden en localStorage
+    */
+    resumenBoleta.innerHTML = `
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>IGV:</td>
+          <td>S/ ${(total * 0.18).toFixed(2)}</td>
+        </tr>
+        <tr>
+        <td>TOTAL:</td>
+        <td>S/ ${total.toFixed(2)}</td>
+        </tr>
+      </tbody>
+    </table>
+    `;
+    boletaSection.appendChild(resumenBoleta);
 }
 
 let platosCreados = crearCartasComida(platosPeruanos);
