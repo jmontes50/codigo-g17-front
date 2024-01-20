@@ -142,6 +142,7 @@ let platosPeruanos = [
 ];
 
 let platosSection = document.getElementById("platos");
+let boletaSection = document.getElementById("boleta");
 
 let carritoCompras = [];
 
@@ -213,7 +214,8 @@ function crearCartasComida (listaPlatos) {
           let platoObtenido = encontrarPlato(evento.target.dataset.id);
           // console.log(platoObtenido)
           agregarProductoACarrito(platoObtenido);
-          console.log(carritoCompras);
+          crearBoleta(carritoCompras);
+          console.table(carritoCompras);
         })
 
         arrCartas.push(cartaComida)
@@ -222,8 +224,35 @@ function crearCartasComida (listaPlatos) {
     return arrCartas;
 }
 
+function crearBoleta (carrito) {
+  //limpiamos el contenido boleta section
+  boletaSection.innerHTML = "";
+  //dibujamos su contenido
+  carrito.forEach(function(plato){
+    let platoBoleta = document.createElement("div");
+    platoBoleta.classList.add("d-flex");
+    platoBoleta.classList.add("p-3");
+    platoBoleta.classList.add("border");
+    platoBoleta.classList.add("round");
+    platoBoleta.classList.add("mb-3");
+    platoBoleta.innerHTML = `
+      <img src="https://picsum.photos/300" class="w-25 rounded me-3" alt="${plato.nombre}" />
+      <div>
+        <h5 class="text-primary fw-bold">${plato.nombre}</h5>
+        <p>S/ ${plato.precio}</p>
+        <div>
+          <button class="btn btn-primary btn-sm"> - </button>
+          <span>${plato.cantidad}</span>
+          <button class="btn btn-primary btn-sm"> + </button>
+        </div>
+      </div>
+    `;
+    boletaSection.appendChild(platoBoleta);
+  })
+}
+
 let platosCreados = crearCartasComida(platosPeruanos);
-console.log(platosCreados)
+// console.log(platosCreados)
 platosCreados.forEach(function(carta){
     platosSection.appendChild(carta);
 });
