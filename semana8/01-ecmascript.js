@@ -168,3 +168,20 @@ let comprador = {
 }
 
 // console.log(comprador)
+//arreglos desestructuración
+
+const peliculas = ["Interstellar", "BeetleJuice", "TopGun", "rapidos y furiosos"];
+
+// console.log(peliculas[0])
+// console.log(peliculas[1])
+// console.log(peliculas[2])
+// console.log(peliculas[3])
+
+// const peliTerror = peliculas[1];
+
+const [peliCiencia, peliTerror, peliAccion, peliAutos] = peliculas;
+
+console.log(peliCiencia)
+console.log(peliTerror)
+console.log(peliAccion)
+console.log(peliAutos)
