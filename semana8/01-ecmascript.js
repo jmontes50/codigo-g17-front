@@ -106,9 +106,65 @@ console.log("pokemon1", pokemon1)
 
 console.log("pokemon3", pokemon3)
 
+delete pokemon3.entrenador
+
+console.log("pokemon3 después del delete", pokemon3)
+
 //----------- Spread Operator en arrays
 const platos = ["Tacu Tacu", "Chaufa", "Ají de gallina"];
 
 const carta = [...platos, "Adobo", "Cuy", "carapulcra chinchana"];
 
 console.log("carta", carta)
+
+//---------------------------------------
+//DESESTRUCTURACIÓN
+const pelicula = {
+    titulo:"Shrek",
+    anio:2001,
+    productora:"Dreamworks"
+}
+
+// console.log(pelicula.titulo)
+
+// console.log(pelicula.anio)
+
+// console.log(pelicula.productora)
+//Si yo conozco las propiedades de algo, puedo dividirlo en las partes que me interesen
+
+const { titulo, productora, anio } = pelicula;
+
+console.log(titulo)
+
+console.log(anio)
+
+console.log(productora)
+
+const moto = {
+    marca:"Kawasaki",
+    anio:2024,
+    color:"negro",
+    motor:"900cc",
+    precio: 26000
+}
+//al desestructurar el parámetro que seria un objeto me aseguro de que lleguen los valores correctos y evito errores en caso pase un argumento con el orden errado
+const procesarMoto = ({marca, anio, precio, motor}) => {
+    //stuff
+    console.log(marca, anio, precio, motor)
+}
+
+// procesarMoto("Kawasaki", 2024, "negro", "900cc")
+procesarMoto(moto)
+
+
+const propietario = "Pool";
+//Estoy indicando un objeto que tiene la propiedad propietario con valor de la variable/referencia llamada propietario
+console.log({ propietario })
+// console.log({ propietario: propietario })
+
+let comprador = {
+    // propietario: propietario
+    propietario
+}
+
+// console.log(comprador)
