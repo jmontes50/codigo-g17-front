@@ -5,7 +5,7 @@ class Personaje {
     salto;
     velocidad;
     desplazamiento;
-    // propiedad privada, con #
+    // propiedad privada, con #, aplicamos encapsulamiento
     #fuerza;
     // construir mi objeto
     // Tiene que tener ese nombre, constructor
@@ -22,16 +22,22 @@ class Personaje {
     }
 
     //Getters y Setters
+    
     get fuerza() {
         return this.#fuerza;
     }
 
     set fuerza(nuevaFuerza) {
+        //si el tipo de dato NO es un number
         if(typeof nuevaFuerza !== "number"){
             console.log("Error de tipado");
             return; //retorna un valor, corta la ejecución de la función
         }
         this.#fuerza = nuevaFuerza
+    }
+
+    atacar(oponente){
+        console.log(`${this.nombre} ataca a ${oponente}`)
     }
 }
 //new NombreClase, estamos creando una instancia a partir de la clase Personaje
@@ -45,3 +51,23 @@ personaje1.fuerza = 120;
 
 console.log(personaje1.fuerza)
 
+personaje1.atacar("Kirby");
+
+//-----------------------
+//HERENCIA
+//Podemos crear una clase que herede otras propiedades
+class Bot extends Personaje {
+    dificultad;
+
+    constructor(Nombre, Peso, Salto, Velocidad, Desplazamiento, Fuerza, Dificultad){
+        //super que hara referencia al constructor de la clase padre
+        super(Nombre, Peso, Salto, Velocidad, Desplazamiento, Fuerza)
+        this.dificultad = Dificultad
+    }
+}
+
+const robot1 = new Bot("Charizard", 120, 150, 45, 35, 160, "fácil")
+
+console.log(robot1)
+
+robot1.atacar("Rattata")
