@@ -5,6 +5,7 @@ const Contador = () => {
   //el inicio del ciclo de vida, el codigo que yo implemente se ejecutará primero
   // let numero = 1;
   //const [nombreEstado💡, funciónQueActualizaElEstado🎛️] = useState(valorInicial)
+  //mis estados pueden ser number, string, booleans, null, undefined, objetos o arrays
   const [numero, setNumero] = useState(1)
   console.log(numero);
 
