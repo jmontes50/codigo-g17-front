@@ -2,7 +2,8 @@
 //En algunas versiones de librerias como 
 //react Native si es necesario
 //import React from "react"; 
-const Mensaje = () => {
+const Mensaje = (props) => {
+    console.log("PROPS: ", props)
     return (
         // estas llaves de html que aparentan ser vacias
         // se conocen como Fragment, funciona como un 

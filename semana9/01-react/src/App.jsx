@@ -1,10 +1,10 @@
-import "./App.css"
+import "./App.css";
 //cuando importamos algo de JS o JSX, no es necesario agregarle la extensión, si es algo diferente si es imperativo
-import Mensaje from "./components/Mensaje"; 
+import Mensaje from "./components/Mensaje";
 //un componente no es más que una función
 //El nombre de la función que representa el componente
 //1. El nombre tiene que estar en Mayúsculas
-function App (){
+function App() {
   const titulo = "Mi primera app";
   //3. esta función/componente Tiene que retornar un JSX
   return (
@@ -13,9 +13,17 @@ function App (){
       <h1>{titulo}</h1>
       <section>
         <h2 className="red">Holaaaaaaaaaaa</h2>
+        {/* Props */}
+        <Mensaje 
+          propsTitulo={titulo} 
+          numero="1"
+        />
+        <Mensaje />
+        <Mensaje />
         {/* Siempre que deseemos poner codigo de JS dentro de JSX voy a tener que abrir {} y adentro poner una expresión de JS*/}
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsum id minima impedit numquam debitis qui. Resultado: {2 + 6}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+          ipsum id minima impedit numquam debitis qui. Resultado: {2 + 6}
         </p>
         <div>
           <label htmlFor="idNombre">Nombre:</label>
@@ -24,11 +32,8 @@ function App (){
       </section>
       {/* Toda etiqueta ya sea de html o de un componente debe estar cerrada o con su etiqueta de cierre */}
       <hr />
-      <Mensaje />
-      <Mensaje />
-      <Mensaje />
     </>
-  )
+  );
 }
 
 //2. exportar esta función
