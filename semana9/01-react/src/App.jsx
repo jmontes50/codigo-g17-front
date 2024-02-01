@@ -1,6 +1,7 @@
 import "./App.css";
 //cuando importamos algo de JS o JSX, no es necesario agregarle la extensión, si es algo diferente si es imperativo
 import Mensaje from "./components/Mensaje";
+import Contador from "./components/Contador";
 //un componente no es más que una función
 //El nombre de la función que representa el componente
 //1. El nombre tiene que estar en Mayúsculas
@@ -13,6 +14,7 @@ function App() {
       <h1>{titulo}</h1>
       <section>
         <h2 className="red">Holaaaaaaaaaaa</h2>
+        <Contador />
         {/* Props */}
         <Mensaje 
           propsTitulo={titulo} 
