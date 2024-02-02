@@ -1,13 +1,5 @@
-import { useState } from "react"
-
-export default function Form() {
-  const [nombre, setNombre] = useState("Jorge")
-  console.log({ nombre })
-
-//   const updateNombre = (evento) => {
-//     console.log(evento)
-//     setNombre(evento.target.value)
-//   }
+export default function Form(props) {
+  console.log(props)
 
   return (
     <>
@@ -18,9 +10,9 @@ export default function Form() {
             //El value de todo input, select, 
             //debe estar amarrado a un estado
             placeholder="Tu nombre"
-            value={nombre}
+            value={props.nombre}
             onChange={(evento) => {
-                setNombre(evento.target.value)
+                props.setNombre(evento.target.value)
             }}
             // onChange={updateNombre}
         />
