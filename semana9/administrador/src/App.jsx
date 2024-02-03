@@ -4,8 +4,8 @@ import ManageProduct from "./views/ManageProduct"
 export default function App() {
   return (
     <>
-      {/* <Dashboard /> */}
-      <ManageProduct />
+      <Dashboard />
+      {/* <ManageProduct /> */}
     </>
   )
 }
