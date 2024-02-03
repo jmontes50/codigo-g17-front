@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { saveProduct } from "../services/productService";
 
 export default function ManageProduct() {
   const [form, setForm] = useState({
@@ -9,7 +10,7 @@ export default function ManageProduct() {
     color:[],
     stock:0,
     review:[]
-  })
+  });
 
   const changeForm = (evento) => {
     // console.log("NAME", evento.target.name)
@@ -21,8 +22,12 @@ export default function ManageProduct() {
     setForm(copyStateForm)
   }
 
-  const saveProduct = () => {
-    console.log({ form })
+  const handleCreate = () => {
+    // console.log({ form })
+    saveProduct(form)
+    .then(respuesta => {
+      alert(`Se creo el producto ${respuesta.nombre}`)
+    })
   }
 
   return (
@@ -100,7 +105,7 @@ export default function ManageProduct() {
             <button
               className="btn btn-primary btn-lg"
               type="button"
-              onClick={saveProduct}
+              onClick={handleCreate}
             >
               Guardar
             </button>
