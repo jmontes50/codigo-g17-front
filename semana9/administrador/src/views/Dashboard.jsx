@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 import axios from "axios";
 import ShowColors from "../components/ShowColors";
 
@@ -27,9 +28,11 @@ export default function Dashboard() {
     <div className="container p-4">
         <div className="d-flex justify-content-between py-4">
             <h1>Productos</h1>
-            <button className="btn btn-dark">
-                Crear Producto
-            </button>
+            <Link to="/crearproducto">
+                <button className="btn btn-dark">
+                    Crear Producto
+                </button>
+            </Link>
         </div>
         <table className="table">
             <thead>
