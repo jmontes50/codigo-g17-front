@@ -2,6 +2,7 @@ import { useState } from "react";
 import { saveProduct } from "../services/productService";
 import { uploadFile } from "../services/storageService";
 import Cargando from "../components/Cargando";
+import SelectColors from "../components/SelectColors";
 
 let imagenProducto;
 
@@ -15,6 +16,8 @@ export default function ManageProduct() {
     stock:0,
     review:[]
   });
+
+
 
   const [estaCargando, setEstaCargando] = useState(false)
 
@@ -48,6 +51,11 @@ export default function ManageProduct() {
     .catch(err => {
       console.error(err)
     })
+  }
+
+  const handleColor = (newColor) => {
+     console.log({newColor})
+    setForm({...form, color:[...form.color, newColor]})
   }
 
   if(estaCargando) {
@@ -140,6 +148,7 @@ export default function ManageProduct() {
                     onChange={(evento) => {changeForm(evento)}}
                 />
             </div>
+            <SelectColors colors={form.color} handleColor={handleColor}/>
             <button
               className="btn btn-primary btn-lg"
               type="button"
