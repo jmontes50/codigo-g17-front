@@ -33,8 +33,12 @@ export default function ManageProduct() {
   const handleCreate = () => {
     // console.log({ form })
     uploadFile(imagenProducto, "photos")
-    .then(respuesta => {
-      console.log(respuesta)
+    .then(urlImagen => {
+      // console.log(urlImagen)
+      return saveProduct({...form, imagen: urlImagen})
+    })
+    .then(() => {
+      alert(`Se creo el producto ${form.nombre}`)
     })
     .catch(err => {
       console.error(err)
