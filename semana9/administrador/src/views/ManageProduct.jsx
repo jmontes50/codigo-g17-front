@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { saveProduct } from "../services/productService";
+import { uploadFile } from "../services/storageService";
+
+let imagenProducto;
 
 export default function ManageProduct() {
   const [form, setForm] = useState({
@@ -22,12 +25,26 @@ export default function ManageProduct() {
     setForm(copyStateForm)
   }
 
+  const handleImage = (evento) => {
+    console.log("HANDLE IMAGE", evento.target.files[0])
+    imagenProducto = evento.target.files[0]
+  }
+
   const handleCreate = () => {
     // console.log({ form })
+    uploadFile(imagenProducto, "photos")
+    .then(respuesta => {
+      console.log(respuesta)
+    })
+    .catch(err => {
+      console.error(err)
+    })
+    /*
     saveProduct(form)
     .then(respuesta => {
       alert(`Se creo el producto ${respuesta.nombre}`)
     })
+    */
   }
 
   return (
@@ -83,6 +100,20 @@ export default function ManageProduct() {
                     value={form.precio}
                     name="precio"
                     onChange={(evento) => {changeForm(evento)}}
+                />
+            </div>
+            <div className="mb-3">
+                <label 
+                    className="form-label" 
+                    htmlFor="inputImagen"
+                >
+                    Imagen a guardar
+                </label>
+                <input
+                  id="inputImagen"
+                  type="file"
+                  className="form-control"
+                  onChange={handleImage}
                 />
             </div>
             <div className="mb-3">
