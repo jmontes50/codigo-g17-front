@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { saveProduct } from "../services/productService";
 import { uploadFile } from "../services/storageService";
+import Cargando from "../components/Cargando";
 
 let imagenProducto;
 
@@ -14,6 +15,8 @@ export default function ManageProduct() {
     stock:0,
     review:[]
   });
+
+  const [estaCargando, setEstaCargando] = useState(true)
 
   const changeForm = (evento) => {
     // console.log("NAME", evento.target.name)
@@ -31,6 +34,7 @@ export default function ManageProduct() {
   }
 
   const handleCreate = () => {
+    setEstaCargando(true)
     // console.log({ form })
     uploadFile(imagenProducto, "photos")
     .then(urlImagen => {
@@ -38,17 +42,16 @@ export default function ManageProduct() {
       return saveProduct({...form, imagen: urlImagen})
     })
     .then(() => {
+      setEstaCargando(false)
       alert(`Se creo el producto ${form.nombre}`)
     })
     .catch(err => {
       console.error(err)
     })
-    /*
-    saveProduct(form)
-    .then(respuesta => {
-      alert(`Se creo el producto ${respuesta.nombre}`)
-    })
-    */
+  }
+
+  if(estaCargando) {
+    return <Cargando />
   }
 
   return (
