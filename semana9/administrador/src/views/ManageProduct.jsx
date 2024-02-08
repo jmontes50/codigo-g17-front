@@ -16,7 +16,7 @@ export default function ManageProduct() {
     review:[]
   });
 
-  const [estaCargando, setEstaCargando] = useState(true)
+  const [estaCargando, setEstaCargando] = useState(false)
 
   const changeForm = (evento) => {
     // console.log("NAME", evento.target.name)
