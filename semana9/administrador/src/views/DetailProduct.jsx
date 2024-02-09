@@ -157,6 +157,9 @@ export default function DetailProduct() {
             className="form-control"
             onChange={handleImage}
           />
+          <p className="form-text">
+            Actualmente la imagen de este producto es: {form.imagen}
+          </p>
         </div>
         <div className="mb-3">
           <label

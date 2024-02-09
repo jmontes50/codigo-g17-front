@@ -27,9 +27,20 @@ const getProductById = (id) => {
     })
 }
 
+const updateProduct = (product) => {
+    return axios.put(`${PRODUCTS_URL}/${product.id}`, product)
+    .then((response) => {
+        return response.data;
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}
+
 
 
 export {
     saveProduct,
-    getProductById
+    getProductById,
+    updateProduct
 }
