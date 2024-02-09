@@ -14,7 +14,7 @@ export default function ManageProduct() {
     nombre: "",
     descripcion: "",
     precio: 0,
-    imagen: "https://loremflickr.com/640/480/clothes",
+    imagen: "",
     color: [],
     stock: 0,
     review: []
