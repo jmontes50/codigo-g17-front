@@ -17,6 +17,19 @@ const saveProduct = (product) => {
     })
 }
 
+const getProductById = (id) => {
+    return axios.get(`${PRODUCTS_URL}/${id}`)
+    .then((response) => {
+        return response.data;
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}
+
+
+
 export {
-    saveProduct
+    saveProduct,
+    getProductById
 }
