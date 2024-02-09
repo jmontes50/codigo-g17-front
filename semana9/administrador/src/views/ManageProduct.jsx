@@ -54,7 +54,8 @@ export default function ManageProduct() {
   }
 
   const handleColor = (newColor) => {
-     console.log({newColor})
+    // console.log("form.color", [...form.color] )
+    //  console.log({newColor})
     setForm({...form, color:[...form.color, newColor]})
   }
 
