@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ShowColors from "../components/ShowColors";
-import { deleteProduct } from "../services/productService";
+import { deleteProduct, getProducts } from "../services/productService";
 import Swal from "sweetalert2";
 
 export default function Dashboard() {
@@ -26,6 +26,10 @@ export default function Dashboard() {
       .then((result) => {
         if (result.isConfirmed) {
           return deleteProduct(id);
+          //La acción de cancelar la captura is dismissed
+        } else if (result.isDismissed) {
+          //para detener el flujo del encadenamiento forzamos un error
+          throw new Error("Acción cancelada")
         }
       })
       .then((response) => {
@@ -37,8 +41,14 @@ export default function Dashboard() {
         //filtra los productos que no coincidan con el id recibido a eliminar
       })
       .then(() => {
-        const productosActualizados = productos.filter((prod) => prod.id !== id);
-        setProductos(productosActualizados)
+        // const productosActualizados = productos.filter((prod) => prod.id !== id);
+        // setProductos(productosActualizados)
+        //cuando eliminamos el producto volvermos a pedir los datos, hacemos una nueva petición
+        return getProducts()
+      })
+      .then((response) => {
+        //ya con los datos los mostremos de nuevo actualizados
+        setProductos(response)
       })
       .catch((error) => {
         console.log(error)
@@ -47,14 +57,10 @@ export default function Dashboard() {
 
 
   useEffect(() => {
-    axios.get('https://616b5ead16c3fa001717167c.mockapi.io/productos')
-      .then((rpta) => {
-        console.table('RPTA', rpta.data)
-        setProductos(rpta.data)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+    getProducts()
+      .then((response) => {
+        setProductos(response)
+      }).catch(err => console.log(err))
   }, [])
   return (
     <>
