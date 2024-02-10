@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ShowColors from "../components/ShowColors";
 import { deleteProduct } from "../services/productService";
+import Swal from "sweetalert2";
 
 export default function Dashboard() {
   const [productos, setProductos] = useState([])
@@ -13,10 +14,31 @@ export default function Dashboard() {
    * 3. mostrar esos datos
    */
   const handleDelete = (id) => {
-    deleteProduct(id)
+    Swal.fire({
+      title: 'Está seguro de eliminar el producto?',
+      text: "Esta acción es irreversible",
+      icon: 'warning',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonText: "Sí, Eliminar",
+      cancelButtonText: "No, Cancelar"
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          return deleteProduct(id);
+        }
+      })
       .then((response) => {
         console.log(response)
-        // setProductos(productos.filter((prod) => prod.id !== id))
+        return Swal.fire({
+          icon: 'success',
+          title: 'Producto Eliminado',
+        })
+        //filtra los productos que no coincidan con el id recibido a eliminar
+      })
+      .then(() => {
+        const productosActualizados = productos.filter((prod) => prod.id !== id);
+        setProductos(productosActualizados)
       })
       .catch((error) => {
         console.log(error)
