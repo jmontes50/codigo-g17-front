@@ -6,6 +6,7 @@ import SelectColors from "../components/SelectColors";
 import Swal from "sweetalert2";
 import { uploadFile } from "../services/storageService";
 import Cargando from "../components/Cargando";
+import { updateProduct } from "../services/productService";
 
 let imagenProducto;
 
@@ -58,15 +59,20 @@ export default function DetailProduct() {
     uploadFile(imagenProducto, "photos")
       .then(urlImagen => {
         // console.log(urlImagen)
-        // return saveProduct({ ...form, imagen: urlImagen });
+        //pero si no seleccionar una imagen para subir, no considerara cambiar la url de la imagen
+        if (!imagenProducto) {
+          return updateProduct({ ...form })
+        }
+        //si al contrario he seleccionado una imagen
+        return updateProduct({ ...form, imagen: urlImagen })
       })
       .then(() => {
         setEstaCargando(false)
         // alert(`Se creo el producto ${form.nombre}`)
         return Swal.fire({
           icon: "success",
-          title: "Producto creado",
-          text: `Se creo el producto ${form.nombre}`
+          title: "Producto Actualizado",
+          text: `Se actualizo el producto ${form.nombre}`
         });
       })
       //aquí podriamos capturar el resultado de dar click al botón de confirmación
@@ -91,7 +97,7 @@ export default function DetailProduct() {
 
   return (
     <main className="container p-4">
-      <h2>Crear Producto</h2>
+      <h2>Actualizar Producto</h2>
       <form>
         <div className="mb-3">
           <label

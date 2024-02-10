@@ -37,10 +37,21 @@ const updateProduct = (product) => {
     })
 }
 
+const deleteProduct = (id) => {
+    return axios.delete(`${PRODUCTS_URL}/${id}`)
+    .then((response) => {
+        return response.data;
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}
+
 
 
 export {
     saveProduct,
     getProductById,
-    updateProduct
+    updateProduct,
+    deleteProduct
 }
