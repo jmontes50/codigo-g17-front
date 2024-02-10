@@ -1,0 +1,1 @@
+console.log("Hola, que tal, como les fue hoy, que tengan buen finde")

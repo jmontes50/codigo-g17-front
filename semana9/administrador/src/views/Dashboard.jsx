@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
-import axios from "axios";
 import ShowColors from "../components/ShowColors";
 import { deleteProduct, getProducts } from "../services/productService";
 import Swal from "sweetalert2";
