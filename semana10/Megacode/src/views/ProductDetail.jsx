@@ -10,13 +10,10 @@ export default function ProductDetail() {
     `${import.meta.env.VITE_ENDPOINT_BASE}/productos/${id}`
   );
 
-  const { cart, addProductToCart } = useContext(CartContext);
+  const { addProductToCart } = useContext(CartContext);
 
   return (
     <>
-    {/* temporal */}
-      <div>carrito: {cart.map((item, i) => (<span key={i}>{item.nombre}</span>))}</div>
-      {/*  */}
       <div className="w-75 mx-auto py-6 grid grid-cols-1 md:grid-cols-2">
         <img src={data.imagen} alt={data.nombre} className="w-full" />
         <div className="p-4">

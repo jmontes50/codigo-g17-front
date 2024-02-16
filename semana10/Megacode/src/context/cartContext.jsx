@@ -8,7 +8,21 @@ const CartContextProvider = (props) => {
     const [cart, setCart] = useState([]);
 
     const addProductToCart = (product) => {
-        setCart([...cart, product]);
+        const existsIndex = cart.findIndex(prod => prod.id === product.id)
+        //si no existe el producto en el carrito, lo agrego
+        if(existsIndex === -1){
+            product.cantidad = 1;
+            setCart([...cart, product]);
+        }else{
+            if(Number(product.stock) === cart[existsIndex].cantidad){
+                //si el stock es igual a la cantidad, no lo agrego, hago directamente un return
+                return;
+            }
+            //en caso no exista, hago una copia de cart en copyCart, incremento la cantidad del producto en +1 y actualizo cart con la copia modificada
+            const copyCart = [...cart];
+            copyCart[existsIndex].cantidad++;
+            setCart(copyCart);
+        }
     }
 
     // para poder crear el Provider que permitirá compartir contenido con todos los componentes, tenemos que crearlo a partir del Contexto Creado
