@@ -2,18 +2,8 @@ import { Link } from "react-router-dom";
 import useData from "../hooks/useAxios";
 import ProductCard from "./ProductCard";
 
-export default function ProductsSlice() {
-  // console.log("variable entorno", import.meta.env.VITE_ENDPOINT_BASE)
-  // agregar ruta base a variable de entorno en el archivo .env
-  const { data, error, isLoading } = useData(`${import.meta.env.VITE_ENDPOINT_BASE}/productos`);
-
-  if (isLoading) {
-    return <p>Cargando...</p>
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>
-  }
+export default function ProductsSlice({ data }) {
+  //data serán unos props más donde yo de una array y en base a ese array busque dibujar mis productos
 
   return (
     <section className="container mx-auto p-4">
@@ -22,7 +12,7 @@ export default function ProductsSlice() {
         <Link to="/products" className="text-gray-500 font-semibold">Ver más <span className="text-blue-500">{" > "}</span></Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-        {data.slice(data.length - 5, data.length).map(product => (
+        {data.map(product => (
           <div key={product.id}>
             <ProductCard product={product} />
           </div>
