@@ -1,15 +1,19 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect} from "react";
 //crear un contexto que nos permita manejar los productos en el carrito
 
 //Es una instanciación que me permite utilizar el context de react
 const CartContext = createContext();
 
 const CartContextProvider = (props) => {
-    const value = 200;
+    const [cart, setCart] = useState([]);
+
+    const addProductToCart = (product) => {
+        setCart([...cart, product]);
+    }
 
     // para poder crear el Provider que permitirá compartir contenido con todos los componentes, tenemos que crearlo a partir del Contexto Creado
     //y para pasar referencias con mi provider tendre que indicarlas como props
-    return <CartContext.Provider value={value}>
+    return <CartContext.Provider value={{ cart, addProductToCart }}>
         {/* Estamos utilizando props.children para poder pasar de forma transparente el contenido a renderizar */}
         {props.children}
     </CartContext.Provider>
