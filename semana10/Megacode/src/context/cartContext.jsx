@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect} from "react";
+import { createContext, useState, useEffect } from "react";
+import { getStorage, saveStorage } from "../utils/localStorage";
 //crear un contexto que nos permita manejar los productos en el carrito
 
 //Es una instanciación que me permite utilizar el context de react
@@ -25,9 +26,25 @@ const CartContextProvider = (props) => {
         }
     }
 
+    const totalCart = cart.reduce((acc, prod) => acc + prod.cantidad, 0);
+
+    useEffect(() => {
+        const storageCart = getStorage('cart');
+        //agregamos la validación ya que en caso no haya en cart de LS no obtengamos un undefined o ""
+        if(storageCart){
+            setCart(storageCart);
+        }
+    },[]);
+
+    useEffect(() => {
+        if(cart.length > 0){
+            saveStorage('cart', cart);
+        }
+    },[cart])
+
     // para poder crear el Provider que permitirá compartir contenido con todos los componentes, tenemos que crearlo a partir del Contexto Creado
     //y para pasar referencias con mi provider tendre que indicarlas como props
-    return <CartContext.Provider value={{ cart, addProductToCart }}>
+    return <CartContext.Provider value={{ cart, addProductToCart, totalCart }}>
         {/* Estamos utilizando props.children para poder pasar de forma transparente el contenido a renderizar */}
         {props.children}
     </CartContext.Provider>

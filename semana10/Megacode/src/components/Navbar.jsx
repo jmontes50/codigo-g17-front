@@ -4,7 +4,7 @@ import { CartContext } from "../context/cartContext";
 
 export default function Navbar() {
 
-  const { cart } = useContext(CartContext);
+  const { cart, totalCart } = useContext(CartContext);
 
   return (
     <nav className="bg-blue-700 p-4">
@@ -21,7 +21,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="flex space-x-4 text-white">Carrito: {cart.length}</div>
+        <div className="flex space-x-4 text-white">Carrito: {totalCart}</div>
       </div>
     </nav>
   );
