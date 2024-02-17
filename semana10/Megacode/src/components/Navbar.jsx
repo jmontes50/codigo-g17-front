@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { CartContext } from "../context/cartContext";
+import Badge from '@mui/material/Badge';
 
 export default function Navbar() {
   const { totalCart } = useContext(CartContext);
@@ -57,8 +58,9 @@ export default function Navbar() {
                 <Link 
                 className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none"
                   >
-                  <i className="fa-solid fa-cart-shopping text-2xl text-gray-300"></i>
-                  {totalCart}
+                  <Badge badgeContent={totalCart} color="primary">
+                    <i className="fa-solid fa-cart-shopping text-2xl text-gray-300"></i>
+                  </Badge>
                 </Link>
               </div>
             </div>

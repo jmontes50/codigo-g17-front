@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import useData from "../hooks/useAxios";
 import { CartContext } from "../context/cartContext";
 import { useParams } from "react-router-dom";
-import ReactImageMagnifier from 'simple-image-magnifier/react'
+import ReactImageMagnifier from "simple-image-magnifier/react";
 import Container from "../components/Container";
 
 export default function ProductDetail() {
@@ -12,11 +12,12 @@ export default function ProductDetail() {
     `${import.meta.env.VITE_ENDPOINT_BASE}/productos/${id}`
   );
 
+  const [colorSelected, setColorSelected] = useState(0);
+
   const { addProductToCart } = useContext(CartContext);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message} </p>;
-
 
   return (
     <>
@@ -26,7 +27,7 @@ export default function ProductDetail() {
             srcPreview={data.imagen}
             srcOriginal={data.imagen}
             width={600}
-            className='max-w-xs bg-gray-200 rounded-lg md:max-w-none max-h-80 md:max-h-none mx-auto'
+            className="max-w-xs bg-gray-200 rounded-lg md:max-w-none max-h-80 md:max-h-none mx-auto"
           />
           <div className="p-4">
             <h2 className="text-2xl font-semibold mb-2">{data.nombre}</h2>
@@ -49,19 +50,42 @@ export default function ProductDetail() {
             </div>
             <h3 className="font-semibold text-dark">Descripción:</h3>
             <p className="text-gray-600 mb-2">{data.descripcion}</p>
-            <p className="text-blue-600 text-xl mb-2">Precio: S/ {data.precio}</p>
+            <p className="text-blue-600 text-xl mb-2">
+              Precio: S/ {data.precio}
+            </p>
             <p className="text-gray-500 text-lg mb-2">Stock: {data.stock}</p>
             <h3 className="font-semibold text-dark mb-1">Color:</h3>
-            {data.color ? data.color.map((color) => (
-              <span 
-                key={color} 
-                className="inline-block w-6 h-6 mr-2 rounded-full" 
-                style={{backgroundColor: color}}></span>
-            )) : null}
+            {/* 
+              al usar obj?.propiedad1?.propiedad estamos validando si la propiedad existe, en caso una propiedad no exista, 
+              la expresión se vuelve undefined, y no se rompe mi código
+              Y  con el operador ternario me aseguro que en caso exista la propiedad y mi expresión sea válida
+              se renderice el JSX
+             */}
+            {data?.color?.length > 0
+              ? data.color.map((color, i) => (
+                  <>
+                    
+                    <button
+                      type="button"
+                      key={color}
+                      className="inline-block w-6 h-6 mr-2 rounded-full p-1"
+                      style={{
+                        backgroundColor: color,
+                        border: "2px solid lightgray",
+                        // estoy haciendo un spreadOperator de un objeto, dependiendo si mi expresión es verdadera o no
+                        ...(colorSelected === i
+                          ? { outline: "4px solid black" }
+                          : { border: "" }),
+                      }}
+                      onClick={() => setColorSelected(i)}
+                    ></button>
+                  </>
+                ))
+              : <p className="text-gray-500">No hay colores disponibles</p>}
             <br />
             <button
               className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"
-              onClick={() => addProductToCart(data)}
+              onClick={() => addProductToCart({...data, colorSelected: data.color[colorSelected]})}
             >
               Agregar al carrito
             </button>
