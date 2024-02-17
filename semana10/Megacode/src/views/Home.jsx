@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/cartContext";
 import ProductsSlice from "../components/ProductsSlice"
 import useData from "../hooks/useAxios"
+import Container from "../components/Container";
 
 export default function Home() {
 
@@ -16,7 +17,9 @@ export default function Home() {
     return (
         <>
             <h1>Home</h1>
-            <ProductsSlice data={data.slice(data.length - 5, data.length)} />
+            <Container>
+                <ProductsSlice data={data.slice(data.length - 5, data.length)} />
+            </Container>
         </>
     )
 }

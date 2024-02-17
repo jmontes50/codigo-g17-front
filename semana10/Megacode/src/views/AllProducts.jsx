@@ -1,5 +1,6 @@
 import useData from "../hooks/useAxios"
 import ProductsSlice from "../components/ProductsSlice"
+import Container from "../components/Container";
 
 export default function AllProducts() {
 
@@ -11,11 +12,11 @@ export default function AllProducts() {
     // .slice(data.length - 5, data.length)
 
     return (
-        <div className="xl:container xl:mx-auto py-6">
+        <Container>
             <h1 className="text-3xl font-bold pb-3">
                 Todos los Productos
             </h1>
             <ProductsSlice data={data} />
-        </div>
+        </Container>
     )
 }
