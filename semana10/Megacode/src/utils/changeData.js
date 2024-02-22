@@ -33,14 +33,15 @@ const filterDataByPrice = (data, priceMin = 1, priceMax = 10000) => {
   },
  */
 
-const filterDataByCategory = (data, category) => {
+const filterDataByCategories = (data, categories) => {
     //yo no quiero comparar si son iguales
     //quiero comparar si category existe dentro del arreglo item.categoria
     //https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
-    return data.filter((item) => item.categoria.includes(category));
+    // return data.filter((item) => item.categoria.includes(category));
+    return data.filter((item) => categories.some((category) => item.categoria.includes(category)));
 }
 
 export {
     filterDataByPrice,
-    filterDataByCategory
+    filterDataByCategories
 }

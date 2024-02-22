@@ -3,11 +3,17 @@ import useData from "../hooks/useAxios";
 import ProductsSlice from "../components/ProductsSlice";
 import Container from "../components/Container";
 import Slider from "@mui/material/Slider";
-import { filterDataByPrice } from "../utils/changeData";
+import { filterDataByPrice, filterDataByCategories } from "../utils/changeData";
 
 export default function AllProducts() {
   const [price, setPrice] = useState([1, 10000]);
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState({
+    Hombre: false,
+    Mujer: false,
+    Accesorios: false,
+    Deporte: false,
+  });
 
   const { data, error, isLoading } = useData(
     `${import.meta.env.VITE_ENDPOINT_BASE}/productos`
@@ -17,8 +23,21 @@ export default function AllProducts() {
     setPrice(newValue);
   };
 
+  const handleCategories = (event) => {
+    // console.log(event.target);
+    const { name, checked } = event.target;
+    setCategories({
+      ...categories,
+      [name]: checked,
+    })
+  };
+
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error.message}</p>;
+
+  // const handleFilter = () => {
+  //   const filteredData = filterDataByCategories();
+  // }
 
   useEffect(() => {
     setProducts(data);
@@ -49,9 +68,81 @@ export default function AllProducts() {
           />
           <h4 className="text-md font-semibold mt-3">Categorías:</h4>
           <div className="flex items-center mb-4">
-            <input id="default-checkbox" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-            <label htmlFor="default-checkbox" className="ms-2 text-sm font-medium text-gray-900">Hombre</label>
-        </div>
+            {/* {console.log("check", categories.Hombre)} */}
+            <input
+              id="hombre-categoria"
+              name="Hombre"
+              checked={categories.Hombre}
+              onChange={(e) => {
+                handleCategories(e);
+              }}
+              type="checkbox"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="hombre-categoria"
+              className="ms-2 text-sm font-medium text-gray-900"
+            >
+              Hombre
+            </label>
+          </div>
+          <div className="flex items-center mb-4">
+            <input
+              id="mujer-categoria"
+              type="checkbox"
+              name="Mujer"
+              checked={categories.Mujer}
+              onChange={(e) => {
+                handleCategories(e);
+              }}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="mujer-categoria"
+              className="ms-2 text-sm font-medium text-gray-900"
+            >
+              Mujer
+            </label>
+          </div>
+          <div className="flex items-center mb-4">
+            <input
+              id="accesorios-categoria"
+              type="checkbox"
+              name="Accesorios"
+              checked={categories.Accesorios}
+              onChange={(e) => {
+                handleCategories(e);
+              }}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="accesorios-categoria"
+              className="ms-2 text-sm font-medium text-gray-900"
+            >
+              Accesorios
+            </label>
+          </div>
+          <div className="flex items-center mb-4">
+            <input
+              id="deporte-categoria"
+              type="checkbox"
+              name="Deporte"
+              checked={categories.Deporte}
+              onChange={(e) => {
+                handleCategories(e);
+              }}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="deporte-categoria"
+              className="ms-2 text-sm font-medium text-gray-900"
+            >
+              Deporte
+            </label>
+          </div>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Filtrar
+          </button>
         </div>
         {/* contenido */}
         <div className="col-span-12 md:col-span-9">
