@@ -8,6 +8,39 @@ const filterDataByPrice = (data, priceMin = 1, priceMax = 10000) => {
     return data.filter((item) => item.precio >= priceMin && item.precio <= priceMax);
 }
 
+/**
+ * 
+ * {
+    "id": "3",
+    "nombre": "Bolso Elegante",
+    "descripcion": "Bolso de mano con estilo elegante",
+    "precio": 60,
+    "imagen": "https://loremflickr.com/640/480/clothes",
+    "color": [
+      "#000000",
+      "#FFD700",
+      "#C0C0C0"
+    ],
+    "stock": "45",
+    "review": [
+      "El bolso es hermoso y espacioso. Calificación: 4",
+      "Perfecto para cualquier ocasión. Calificación: 5"
+    ],
+    "categoria": [
+      "Mujer",
+      "Accesorios"
+    ]
+  },
+ */
+
+const filterDataByCategory = (data, category) => {
+    //yo no quiero comparar si son iguales
+    //quiero comparar si category existe dentro del arreglo item.categoria
+    //https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+    return data.filter((item) => item.categoria.includes(category));
+}
+
 export {
-    filterDataByPrice
+    filterDataByPrice,
+    filterDataByCategory
 }

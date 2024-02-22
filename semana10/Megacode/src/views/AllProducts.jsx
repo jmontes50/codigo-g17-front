@@ -33,6 +33,7 @@ export default function AllProducts() {
     <Container>
       <h1 className="text-3xl font-bold pb-3">Todos los Productos</h1>
       <div className="grid grid-cols-1 md:grid-cols-12">
+        {/* filtroa */}
         <div className="col-span-12 md:col-span-3">
           <h3 className="text-lg font-semibold border-b-2 border-blue-500 mt-4">
             Filtros:
@@ -46,7 +47,13 @@ export default function AllProducts() {
             min={1}
             max={200}
           />
+          <h4 className="text-md font-semibold mt-3">Categorías:</h4>
+          <div className="flex items-center mb-4">
+            <input id="default-checkbox" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+            <label htmlFor="default-checkbox" className="ms-2 text-sm font-medium text-gray-900">Hombre</label>
         </div>
+        </div>
+        {/* contenido */}
         <div className="col-span-12 md:col-span-9">
           <ProductsSlice data={products} columns={3} />
         </div>
