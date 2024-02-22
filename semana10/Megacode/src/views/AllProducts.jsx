@@ -29,15 +29,30 @@ export default function AllProducts() {
     setCategories({
       ...categories,
       [name]: checked,
-    })
+    });
+  };
+
+  const handleFilter = () => {
+    const categoriesEntries = Object.entries(categories);
+    
+    const categoriesTransformed = categoriesEntries.map(
+      (category) => {
+        //recordemos que las entries es un arreglo con la [nombre, valor] en nuestro caso ["Hombre", true]
+        if(category[1] === true){
+          return category[0];
+        }
+      }
+    );
+
+    const categoriesSelected = categoriesTransformed.filter((cat) => cat)
+
+    // console.log({ categoriesSelected });
+    const filteredData = filterDataByCategories(products, categoriesSelected);
+    console.log({ filteredData });
   };
 
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error.message}</p>;
-
-  // const handleFilter = () => {
-  //   const filteredData = filterDataByCategories();
-  // }
 
   useEffect(() => {
     setProducts(data);
@@ -140,7 +155,10 @@ export default function AllProducts() {
               Deporte
             </label>
           </div>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleFilter}
+          >
             Filtrar
           </button>
         </div>
