@@ -5,6 +5,7 @@ import Home from "./views/Home";
 import AllProducts from "./views/AllProducts";
 import ProductDetail from "./views/ProductDetail";
 import Checkout from "./views/Checkout";
+import Register from "./views/Register";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/products" element={<AllProducts />} />
           <Route path="/detail/:id" element={<ProductDetail />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </CartContextProvider>
     </Router>
