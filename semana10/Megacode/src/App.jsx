@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./views/Home";
 import AllProducts from "./views/AllProducts";
 import ProductDetail from "./views/ProductDetail";
+import Checkout from "./views/Checkout";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<AllProducts />} />
           <Route path="/detail/:id" element={<ProductDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </CartContextProvider>
     </Router>
