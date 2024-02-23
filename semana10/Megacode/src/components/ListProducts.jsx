@@ -15,13 +15,22 @@ export default function ListProducts({ products }) {
                   {product.nombre}
                 </h3>
                 <div className="flex mt-1 text-sm leading-6 text-gray-600">
-                  <p>Color seleccionado:{" "}</p>
+                  <p>Color seleccionado: </p>
                   <div
                     className="mt-1 ms-1 rounded-full w-4 h-4"
                     style={{ backgroundColor: product.colorSelected }}
                   ></div>
                 </div>
               </div>
+            </div>
+            {/*  */}
+            <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+              <p className="text-sm leading-6 font-semibold text-gray-900">
+                Total: S/ {product.precio * product.cantidad}
+              </p>
+              <p className="mt-1 text-xs leading-5 text-gray-500">
+                P.U: S/ {product.precio}, Cant.: {product.cantidad} Unid.
+              </p>
             </div>
           </li>
         ))}
