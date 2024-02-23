@@ -1,4 +1,13 @@
 export default function ListProducts({ products }) {
+  //reduce iterará en cada item de products y acumulará la expresión que yo le de, en este caso
+  //precio * cantidad, y finalmente retornará el total de la compra.
+  const totalCompra = products.reduce(
+    //como es un objeto tengo que darle 0 para que suma comience con el valor 0
+    //porque por defecto suma, toma el primer valor de mi array, que en este caso es un objeto
+    (suma, product) => suma + product.precio * product.cantidad,
+    0
+  );
+
   return (
     <ul role="list" className="divide-y divide-gray-100">
       {products.length > 0 &&
@@ -34,6 +43,12 @@ export default function ListProducts({ products }) {
             </div>
           </li>
         ))}
+      {/* Aquí aparte irá el total de la compra */}
+      <li className="flex justify-between gap-x-6 py-5">
+        <p className="font-bold text-lg">Total:</p>
+        {/* toFixed para añadirle 02 decimales */}
+        <p className="font-semibold text-lg">S/ {totalCompra.toFixed(2)}</p>
+      </li>
     </ul>
   );
 }

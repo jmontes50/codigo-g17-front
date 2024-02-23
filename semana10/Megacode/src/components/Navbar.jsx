@@ -50,12 +50,19 @@ export default function Navbar() {
                     >
                       Productos
                     </Link>
+                    <Link
+                      to="/checkout"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white,
+                          rounded-md px-3 py-2 text-sm font-medium"
+                    >
+                      Carrito
+                    </Link>
                   </div>
                 </div>
               </div>
               {/* derecha */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <Link 
+                <Link
                 className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none"
                   >
                   <Badge badgeContent={totalCart} color="primary">
