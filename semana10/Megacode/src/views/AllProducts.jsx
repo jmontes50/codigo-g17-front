@@ -33,7 +33,9 @@ export default function AllProducts() {
   };
 
   const handleFilter = () => {
+    console.log({ categories })
     const categoriesEntries = Object.entries(categories);
+    console.log({ categoriesEntries });
     
     const categoriesTransformed = categoriesEntries.map(
       (category) => {
@@ -43,12 +45,15 @@ export default function AllProducts() {
         }
       }
     );
-
+    console.log({ categoriesTransformed });
+      //despues de haber transformado solamente quedate con los que sean truthy, que no sean ni false, undefined o null
     const categoriesSelected = categoriesTransformed.filter((cat) => cat)
+    console.log({ categoriesSelected });
 
     // console.log({ categoriesSelected });
     const filteredData = filterDataByCategories(products, categoriesSelected);
     console.log({ filteredData });
+    setProducts(filteredData);
   };
 
   if (isLoading) return <p>Cargando...</p>;
