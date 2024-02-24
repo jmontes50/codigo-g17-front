@@ -4,6 +4,7 @@ import { CartContext } from "../context/cartContext";
 import { useParams } from "react-router-dom";
 import ReactImageMagnifier from "simple-image-magnifier/react";
 import Container from "../components/Container";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -15,6 +16,13 @@ export default function ProductDetail() {
   const [colorSelected, setColorSelected] = useState(0);
 
   const { addProductToCart } = useContext(CartContext);
+
+  const notify = () => toast(`${data.nombre} agregado al carrito 🛍️`);
+
+  const handleAddProductToCart = (product) => {
+    addProductToCart(product);
+    notify();
+  }
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message} </p>;
@@ -85,12 +93,13 @@ export default function ProductDetail() {
             <br />
             <button
               className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"
-              onClick={() => addProductToCart({...data, colorSelected: data.color[colorSelected]})}
+              onClick={() => handleAddProductToCart({...data, colorSelected: data.color[colorSelected]})}
             >
               Agregar al carrito
             </button>
           </div>
         </div>
+        <ToastContainer />
       </Container>
     </>
   );
