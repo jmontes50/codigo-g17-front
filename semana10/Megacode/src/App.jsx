@@ -6,6 +6,7 @@ import AllProducts from "./views/AllProducts";
 import ProductDetail from "./views/ProductDetail";
 import Checkout from "./views/Checkout";
 import Register from "./views/Register";
+import Login from "./views/Login";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/detail/:id" element={<ProductDetail />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </CartContextProvider>
     </Router>

@@ -5,8 +5,7 @@ import ListProducts from "../components/ListProducts";
 
 export default function Checkout() {
 
-  const { cart, totalCart } = useContext(CartContext);
-  console.log(cart, totalCart);
+  const { cart } = useContext(CartContext);
   //donde tengo los datos, -> Context
   //como los obtengo? -> useContext
   //al obtenerlos los datos estan de la forma que necesito? -> yes
