@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebaseConfig";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import Container from "../components/Container";
 
 export default function Login() {
@@ -10,16 +10,19 @@ export default function Login() {
 
   const ERRORS = {
     //mensajeErrorFirebase: "mensajequequeremosmostrar"
-    "auth/user-not-found": "Usuario no encontrado, verifique sus datos por favor",
+    "auth/user-not-found":
+      "Usuario no encontrado, verifique sus datos por favor",
     "auth/wrong-password": "La contraseña incorrecta, verifiquela por favor",
-    "auth/invalid-email": "El correo indicado es inválido, verifique sus datos por favor",
+    "auth/invalid-email":
+      "El correo indicado es inválido, verifique sus datos por favor",
     "auth/missing-password": "La contraseña esta vacia, indiquela por favor",
-    "auth/invalid-credential": "Credenciales inválidas, verifique sus datos por favor",
-    "auth/network-request-failed": "Error de red, verifique su conexión a internet",
-  }
+    "auth/invalid-credential":
+      "Credenciales inválidas, verifique sus datos por favor",
+    "auth/network-request-failed":
+      "Error de red, verifique su conexión a internet",
+  };
 
   const notify = (msg) => toast(msg);
-
 
   const startLogin = async () => {
     try {
@@ -32,17 +35,17 @@ export default function Login() {
     } catch (error) {
       console.log("Error", error.code);
       notify(ERRORS[error.code]);
-      throw error
-    }   
+      throw error;
+    }
   };
 
   const handleLogin = () => {
     toast.promise(startLogin(), {
-      pending: 'Validando datos...',
-      success: 'Login exitoso 👍',
+      pending: "Validando datos...",
+      success: "Login exitoso 👍",
       error: "Error al validar, pruebe de nuevo 🤯"
-    })
-  }
+    });
+  };
 
   return (
     <Container>
