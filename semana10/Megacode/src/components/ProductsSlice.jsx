@@ -3,7 +3,6 @@ import useData from "../hooks/useAxios";
 import ProductCard from "./ProductCard";
 
 export default function ProductsSlice({ data, columns = 4 }) {
-  console.log({ columns });
   //data serán unos props más donde yo de una array y en base a ese array busque dibujar mis productos
 
   return (
