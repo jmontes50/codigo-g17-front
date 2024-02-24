@@ -1,11 +1,15 @@
-import { useContext } from "react";
+import { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { CartContext } from "../context/cartContext";
-import Badge from '@mui/material/Badge';
+import { AuthContext } from "../context/authContext";
+import Badge from "@mui/material/Badge";
 
 export default function Navbar() {
   const { totalCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
+
+  console.log("navbar", user);
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -50,13 +54,16 @@ export default function Navbar() {
                     >
                       Productos
                     </Link>
-                    <Link
-                      to="/checkout"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white,
+                    {user ? (
+                      <Link
+                        to="/checkout"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white,
                           rounded-md px-3 py-2 text-sm font-medium"
-                    >
-                      Carrito
-                    </Link>
+                      >
+                        Carrito
+                      </Link>
+                    ) : null}
+
                     <Link
                       to="/register"
                       className="text-gray-300 hover:bg-gray-700 hover:text-white,
@@ -76,13 +83,34 @@ export default function Navbar() {
               </div>
               {/* derecha */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <Link
-                className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none"
-                  >
+                <Link className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none">
                   <Badge badgeContent={totalCart} color="primary">
-                    <i className="fa-solid fa-cart-shopping text-2xl text-gray-300"></i>
+                    <i className="fa-solid fa-cart-shopping text-2xl text-gray-300 me-1"></i>
                   </Badge>
                 </Link>
+                {/* user */}
+                <Menu as="div" className="relative ml-3">
+                  <Menu.Button>
+                    <i className="fa-solid fa-circle-user text-2xl text-gray-300 ms-4"></i>
+                  </Menu.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5">
+                      <Menu.Item>
+                        <span className="bg-gray-100 cursor-pointer ps-1">
+                          Cerrar sesión
+                        </span>
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
               </div>
             </div>
           </div>
