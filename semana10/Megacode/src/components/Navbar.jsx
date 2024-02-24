@@ -78,6 +78,7 @@ export default function Navbar() {
                       >
                         Productos
                       </Link>
+                      {/* Si el usuario esta logueado segun el AuthContext, nuestra el Link del Carrito, este link deberia ser privado solo si tengo un usuario logueado y si no, no muestres nada */}
                       {user ? (
                         <Link
                           to="/checkout"
