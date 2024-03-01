@@ -13,8 +13,6 @@ export default function Checkout() {
   const [position, setPosition] = useState(null);
   const [coords, setCoords] = useState([-12.0630198, -77.0384351]);
 
-  
-
   const {
     register, //para registrar que inputs va a manejar react-hook-forms
     handleSubmit, //para manejar el submit del formulario react-hook-forms
