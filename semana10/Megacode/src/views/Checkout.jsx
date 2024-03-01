@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../context/cartContext";
 import Container from "../components/Container";
 import ListProducts from "../components/ListProducts";
@@ -11,6 +11,9 @@ import LocationMarker from "./LocationMarker";
 
 export default function Checkout() {
   const [position, setPosition] = useState(null);
+  const [coords, setCoords] = useState([-12.0630198, -77.0384351]);
+
+  
 
   const {
     register, //para registrar que inputs va a manejar react-hook-forms
@@ -36,6 +39,21 @@ export default function Checkout() {
   };
 
   // console.log(watch("fullname")); //para ver los cambios en los inputs
+  useEffect(() => {
+    if (navigator.geolocation) {
+      //navigator.geolocation.getCurrentPosition(callbackSuccess, callbackError)
+      navigator.geolocation.getCurrentPosition(
+        (location) => {
+          // location.coords.latitude, location.coords.longitude
+          const { coords: { latitude, longitude }} = location;
+          setCoords([latitude, longitude]);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  }, [])
 
   return (
     <Container>
@@ -106,7 +124,7 @@ export default function Checkout() {
                 border: "1px solid black",
               }}
             >
-              <MapContainer center={[-12.0630198, -77.0384351]} zoom={13}>
+              <MapContainer center={coords} zoom={13}>
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
