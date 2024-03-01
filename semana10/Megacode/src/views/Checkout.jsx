@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/cartContext";
 import Container from "../components/Container";
 import ListProducts from "../components/ListProducts";
@@ -7,8 +7,11 @@ import { useForm } from "react-hook-form";
 import { MapContainer } from "react-leaflet/MapContainer";
 import { TileLayer } from "react-leaflet/TileLayer";
 import { Marker } from "react-leaflet/Marker";
+import LocationMarker from "./LocationMarker";
 
 export default function Checkout() {
+  const [position, setPosition] = useState(null);
+
   const {
     register, //para registrar que inputs va a manejar react-hook-forms
     handleSubmit, //para manejar el submit del formulario react-hook-forms
@@ -108,7 +111,8 @@ export default function Checkout() {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[-12.0630198, -77.0384351]} />
+                {/* <Marker position={[-12.0630198, -77.0384351]} /> */}
+                <LocationMarker position={position} setPosition={setPosition} />
               </MapContainer>
             </div>
             <button>Enviar</button>
