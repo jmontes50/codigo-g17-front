@@ -3,6 +3,10 @@ import { CartContext } from "../context/cartContext";
 import Container from "../components/Container";
 import ListProducts from "../components/ListProducts";
 import { useForm } from "react-hook-form";
+// import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import { MapContainer } from "react-leaflet/MapContainer";
+import { TileLayer } from "react-leaflet/TileLayer";
+import { Marker } from "react-leaflet/Marker";
 
 export default function Checkout() {
   const {
@@ -27,6 +31,8 @@ export default function Checkout() {
   const getDataSubmit = (data) => {
     console.log(data);
   };
+
+  // console.log(watch("fullname")); //para ver los cambios en los inputs
 
   return (
     <Container>
@@ -87,6 +93,23 @@ export default function Checkout() {
                   {...register("address")}
                 />
               </div>
+            </div>
+            {/* Para utilizar el mapContainer tenemos que integrarlo en un elemento que tenga un tamaño predefinido */}
+            <div
+              className=""
+              style={{
+                height: "400px",
+                width: "100%",
+                border: "1px solid black",
+              }}
+            >
+              <MapContainer center={[-12.0630198, -77.0384351]} zoom={13}>
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[-12.0630198, -77.0384351]} />
+              </MapContainer>
             </div>
             <button>Enviar</button>
           </form>
