@@ -26,6 +26,6 @@ const authSlice = createSlice({
 });
 
 export const { setUser, resetUser } = authSlice.actions;
-export const selectUser = (state) => state.auth.user;
+export const selectUser = (state) => state.auth;
 //cuando exportamos algo por defecto al importarlo le podemos poner un alias para que sea más fácil de leer el código
 export default authSlice.reducer;
