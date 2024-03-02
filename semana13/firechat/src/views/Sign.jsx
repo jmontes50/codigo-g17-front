@@ -15,9 +15,19 @@ export default function Sign() {
     <>
       <Nav />
       <div className="container pt-4">
-        <button className="btn btn-primary mx-auto" onClick={handleSign}>
-          Ingresar con Google
-        </button>
+        <div className="card mx-auto" style={{width:'400px'}}>
+          <img
+            className="card-img-top"
+            src="https://img.freepik.com/vector-gratis/ilustracion-concepto-inicio-sesion_114360-739.jpg"
+            alt=" Imagen de storyset en Freepik"
+          />
+          <div className="card-body text-center">
+            <h5 className="card-title">Ingresa al chat</h5>
+            <button className="btn btn-info mx-auto" onClick={handleSign}>
+              <i className="fa-brands fa-google me-2"></i>Ingresar con Google
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
