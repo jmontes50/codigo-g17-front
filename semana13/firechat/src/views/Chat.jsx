@@ -1,8 +1,75 @@
+import { useRef, useState, useEffect, Fragment } from "react";
+import { db } from "../firebase/config";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { selectUser } from "../app/auth/authSlice";
+import { addMessage } from "../services/dbService";
 
 export default function Chat() {
+  const [chats, setChats] = useState([]);
+  const inputMessage = useRef();
+
   const user = useSelector(selectUser);
+
+  const handleMessage = async () => {
+    try {
+      const newMessage = {
+        uid: user.uid,
+        name: user.user,
+        message: inputMessage.current.value,
+        photo: user.photo,
+      };
+      const messageSend = await addMessage(newMessage);
+      console.log(messageSend);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const anotherMessage = (msg) => (
+    <div className="align-self-start d-flex mb-3">
+      <img
+        className="rounded-circle me-2"
+        src={msg.photo}
+        alt={msg.name}
+        style={{ height: "50px" }}
+      />
+      <div className="border border-info rounded p-2">
+        <small className="text-secondary">{msg.name}</small>
+        <br />
+        {msg.message}
+      </div>
+    </div>
+  );
+
+  const myMessage = (msg) => (
+    <div className="align-self-end d-flex mb-3 text-end">
+      <div className="border border-info bg-info p-2 text-dark bg-opacity-75 rounded">
+        <small className="text-secondary">{msg.name}</small>
+        <br />
+        {msg.message}
+      </div>
+      <img
+        className="rounded-circle me-2"
+        src={msg.photo}
+        alt={msg.name}
+        style={{ height: "50px" }}
+      />
+    </div>
+  );
+
+  useEffect(() => {
+    const q = query(collection(db, "chats"));
+    onSnapshot(q, (querySnapshot) => {
+      console.log({ querySnapshot });
+      const chatsObtained = [];
+      // se llama forEach pero no es el forEach que conocemos, es un metodo con ese nombre que viene de la respuesta de firestore
+      querySnapshot.forEach((doc) => {
+        chatsObtained.push(doc.data());
+      });
+      setChats(chatsObtained);
+    });
+  }, []);
 
   return (
     <div className="container mt-5">
@@ -18,34 +85,13 @@ export default function Chat() {
           {/* area chat */}
           <div className="d-flex flex-column p-2">
             <div>
-              {/* mensaje usuarios */}
-              <div className="align-self-start d-flex mb-3">
-                <img
-                  className="rounded-circle me-2"
-                  src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1930204137.1709683200&semt=ais"
-                  alt="..."
-                  style={{ height: "50px" }}
-                />
-                <div className="border border-info rounded p-2">
-                  <small className="text-secondary">Juan Perez</small>
-                  <br />
-                  Mensaje
-                </div>
-              </div>
-              {/* mis mensajes */}
-              <div className="align-self-end d-flex mb-3 text-end">
-                <div className="border border-info bg-info p-2 text-dark bg-opacity-75 rounded">
-                  <small className="text-secondary">{user.user}</small>
-                  <br />
-                  Lorem ipsum dolor sit amet consectetur.
-                </div>
-                <img
-                  className="rounded-circle ms-2 mb-2"
-                  src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1930204137.1709683200&semt=ais"
-                  alt="..."
-                  style={{ height: "50px" }}
-                />
-              </div>
+              {chats.map((ch, i) => (
+                <Fragment key={i}>
+                  {/*  */}
+                  {user.uid === ch.uid ? (myMessage(ch)) : (anotherMessage(ch))}
+                </Fragment>
+              ))}
+             
             </div>
             {/* input */}
             <div className="input-group mb-3">
@@ -53,8 +99,12 @@ export default function Chat() {
                 type="text"
                 className="form-control"
                 placeholder="Escribe tu mensaje"
+                ref={inputMessage}
               />
-              <button className="input-group-text btn btn-info">
+              <button
+                className="input-group-text btn btn-info"
+                onClick={handleMessage}
+              >
                 Enviar
               </button>
             </div>
