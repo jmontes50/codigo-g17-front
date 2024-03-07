@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase/config";
 
@@ -24,4 +24,13 @@ const createUser = async () => {
   }
 };
 
-export { createUser };
+const logoutUser = async () => {
+  try {
+    const user = await signOut(auth);
+    return user
+  } catch (error) {
+    throw error
+  }
+}
+
+export { createUser, logoutUser };

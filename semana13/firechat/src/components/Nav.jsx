@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../app/auth/authSlice";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 
 export default function Nav() {
   const user = useSelector(selectUser);
   console.log(user);
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3">Menu usuario</Popover.Header>
+      <Popover.Body>
+        <span>Cerrar sesión</span>        
+      </Popover.Body>
+    </Popover>
+  );
 
   return (
     <nav className="navbar bg-dark border-bottom border-body">
@@ -23,7 +33,13 @@ export default function Nav() {
                 className="rounded-circle me-1"
                 style={{ height: "28px" }}
               />
-              <span className="text-white">{user.user}</span>
+              <OverlayTrigger
+                trigger="click"
+                placement="bottom"
+                overlay={popover}
+              >
+                <span className="text-white">{user.user}</span>
+              </OverlayTrigger>
             </>
           )}
         </div>

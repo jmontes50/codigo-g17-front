@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+//useState con vitaminas, con Red Bull
 const authSlice = createSlice({
   name: "auth",
   initialState: {
