@@ -1,11 +1,15 @@
 import { createUser } from "../services/authService";
-import Nav from "../components/Nav";
+import { useNavigate } from "react-router-dom";
 
 export default function Sign() {
+
+  const navigate = useNavigate()
+
   const handleSign = async () => {
     try {
       const user = await createUser();
-      console.log(user);
+      navigate(`/chat`)
+      // console.log(user);
     } catch (error) {
       console.log(error);
     }
@@ -13,7 +17,6 @@ export default function Sign() {
 
   return (
     <>
-      <Nav />
       <div className="container pt-4">
         <div className="card mx-auto" style={{width:'400px'}}>
           <img

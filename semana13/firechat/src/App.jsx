@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { setUser, resetUser } from "./app/auth/authSlice";
 import { auth } from "./firebase/config";
 import Sign from "./views/Sign";
+import Chat from "./views/Chat";
+import Nav from "./components/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
@@ -29,8 +31,10 @@ export default function App() {
   return (
     <>
       <Router>
+        <Nav />
         <Routes>
           <Route path="/" element={<Sign />} />
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </Router>
     </>
