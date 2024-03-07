@@ -15,33 +15,48 @@ export default function Chat() {
           <div>
             <h5 className="pb-3">{user.user}</h5>
           </div>
+          {/* area chat */}
           <div className="d-flex flex-column p-2">
-            <div className="align-self-start d-flex mb-3">
-              <img
-                className="rounded-circle me-2"
-                src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1930204137.1709683200&semt=ais"
-                alt="..."
-                style={{ height: "50px" }}
-              />
-              <div className="border border-info rounded p-2">
-                <small className="text-secondary">Juan Perez</small>
-                <br />
-                Mensaje
+            <div>
+              {/* mensaje usuarios */}
+              <div className="align-self-start d-flex mb-3">
+                <img
+                  className="rounded-circle me-2"
+                  src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1930204137.1709683200&semt=ais"
+                  alt="..."
+                  style={{ height: "50px" }}
+                />
+                <div className="border border-info rounded p-2">
+                  <small className="text-secondary">Juan Perez</small>
+                  <br />
+                  Mensaje
+                </div>
+              </div>
+              {/* mis mensajes */}
+              <div className="align-self-end d-flex mb-3 text-end">
+                <div className="border border-info bg-info p-2 text-dark bg-opacity-75 rounded">
+                  <small className="text-secondary">{user.user}</small>
+                  <br />
+                  Lorem ipsum dolor sit amet consectetur.
+                </div>
+                <img
+                  className="rounded-circle ms-2 mb-2"
+                  src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1930204137.1709683200&semt=ais"
+                  alt="..."
+                  style={{ height: "50px" }}
+                />
               </div>
             </div>
-
-            <div className="align-self-end d-flex mb-3 text-end">
-              <div className="border border-info bg-info p-2 text-dark bg-opacity-75 rounded">
-              <small className="text-secondary">{user.user}</small>
-                <br />
-                Lorem ipsum dolor sit amet consectetur.
-              </div>
-              <img
-                className="rounded-circle ms-2 mb-2"
-                src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1930204137.1709683200&semt=ais"
-                alt="..."
-                style={{ height: "50px" }}
+            {/* input */}
+            <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Escribe tu mensaje"
               />
+              <button className="input-group-text btn btn-info">
+                Enviar
+              </button>
             </div>
           </div>
         </div>
