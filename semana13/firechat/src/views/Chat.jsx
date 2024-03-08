@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, Fragment } from "react";
 import { db } from "../firebase/config";
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { selectUser } from "../app/auth/authSlice";
 import { addMessage } from "../services/dbService";
@@ -29,7 +29,7 @@ export default function Chat() {
   const anotherMessage = (msg) => (
     <div className="align-self-start d-flex mb-3">
       <img
-        className="rounded-circle me-2"
+        className="rounded-circle mx-2"
         src={msg.photo}
         alt={msg.name}
         style={{ height: "50px" }}
@@ -43,14 +43,14 @@ export default function Chat() {
   );
 
   const myMessage = (msg) => (
-    <div className="align-self-end d-flex mb-3 text-end">
+    <div className="align-self-end d-flex mb-3 text-end" style={{maxWidth:'300px'}}>
       <div className="border border-info bg-info p-2 text-dark bg-opacity-75 rounded">
         <small className="text-secondary">{msg.name}</small>
         <br />
         {msg.message}
       </div>
       <img
-        className="rounded-circle me-2"
+        className="rounded-circle mx-2"
         src={msg.photo}
         alt={msg.name}
         style={{ height: "50px" }}
@@ -59,7 +59,7 @@ export default function Chat() {
   );
 
   useEffect(() => {
-    const q = query(collection(db, "chats"));
+    const q = query(collection(db, "chats"), orderBy("timestamp", "asc"));
     onSnapshot(q, (querySnapshot) => {
       console.log({ querySnapshot });
       const chatsObtained = [];
@@ -84,7 +84,7 @@ export default function Chat() {
           </div>
           {/* area chat */}
           <div className="d-flex flex-column p-2">
-            <div>
+            <div className="d-flex flex-column overflow-y-scroll border" style={{maxHeight:'52vh'}}>
               {chats.map((ch, i) => (
                 <Fragment key={i}>
                   {/*  */}
