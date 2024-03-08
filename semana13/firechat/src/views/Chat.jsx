@@ -7,6 +7,8 @@ import { addMessage } from "../services/dbService";
 
 export default function Chat() {
   const [chats, setChats] = useState([]);
+  const [users, setUsers] = useState([]);
+
   const inputMessage = useRef();
 
   const user = useSelector(selectUser);
@@ -43,7 +45,10 @@ export default function Chat() {
   );
 
   const myMessage = (msg) => (
-    <div className="align-self-end d-flex mb-3 text-end" style={{maxWidth:'300px'}}>
+    <div
+      className="align-self-end d-flex mb-3 text-end"
+      style={{ maxWidth: "300px" }}
+    >
       <div className="border border-info bg-info p-2 text-dark bg-opacity-75 rounded">
         <small className="text-secondary">{msg.name}</small>
         <br />
@@ -69,6 +74,15 @@ export default function Chat() {
       });
       setChats(chatsObtained);
     });
+
+    const qUsers = query(collection(db, "users"));
+    onSnapshot(qUsers, (querySnapshot) => {
+      const usersObtained = [];
+      querySnapshot.forEach((doc) => {
+        usersObtained.push(doc.data());
+      });
+      setUsers(usersObtained);
+    });
   }, []);
 
   return (
@@ -77,21 +91,34 @@ export default function Chat() {
         <div className="col-12">
           <h1>Chat</h1>
         </div>
-        <div className="col-12 col-md-6 bg-gray"></div>
+        <div className="col-12 col-md-6 bg-gray p-4 border">
+          <h5 className="pb-3">Usuarios</h5>
+          <ul className="list-group">
+            {users.map((user, i) => (
+              <li className="list-group-item" key={i}>
+                <span className="fw-bold">{user.name}</span>
+                <br/>
+                <small className="text-secondary">{user.email}</small>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="col-12 col-md-6 border border-secondary-subtle rounded p-4">
           <div>
             <h5 className="pb-3">{user.user}</h5>
           </div>
           {/* area chat */}
           <div className="d-flex flex-column p-2">
-            <div className="d-flex flex-column overflow-y-scroll border" style={{maxHeight:'52vh'}}>
+            <div
+              className="d-flex flex-column overflow-y-scroll border"
+              style={{ maxHeight: "52vh" }}
+            >
               {chats.map((ch, i) => (
                 <Fragment key={i}>
                   {/*  */}
-                  {user.uid === ch.uid ? (myMessage(ch)) : (anotherMessage(ch))}
+                  {user.uid === ch.uid ? myMessage(ch) : anotherMessage(ch)}
                 </Fragment>
               ))}
-             
             </div>
             {/* input */}
             <div className="input-group mb-3">
